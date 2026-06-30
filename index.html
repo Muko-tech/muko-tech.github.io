@@ -3,247 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Eben Mukokeshi</title>
+    <title>Eben Mukokeshi | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    
     <style>
+        /* Thème Futuriste / Cyberpunk / Glassmorphism */
+        :root {
+            --bg-color: #0a0e17;
+            --primary-glow: #00f3ff;
+            --secondary-glow: #7000ff;
+            --text-main: #e2e8f0;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
             scroll-behavior: smooth;
-            background-color: #f8f9fa;
-            color: #333333;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(112, 0, 255, 0.08), transparent 25%);
         }
-        .navbar-brand {
-            font-weight: bold;
-            letter-spacing: 1px;
+
+        /* Navbar Glassmorphism */
+        .navbar {
+            background: rgba(10, 14, 23, 0.8) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
         }
+        .navbar-brand { font-weight: 900; letter-spacing: 2px; color: var(--primary-glow) !important; text-transform: uppercase; }
+        .nav-link { color: #aaa !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--primary-glow) !important; text-shadow: 0 0 8px var(--primary-glow); }
+
+        /* Effets 3D et Glassmorphism globaux */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 15px 35px rgba(0, 243, 255, 0.15), inset 0 0 20px rgba(255,255,255,0.05);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+
+        /* Hero Section 3D */
         .hero-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 100px 0;
-        }
-        .section-padding {
-            padding: 80px 0;
-        }
-        .section-title {
-            margin-bottom: 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            perspective: 1000px;
             position: relative;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Image de Profil 3D */
+        .profile-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-glow);
+            box-shadow: 0 0 30px var(--primary-glow), inset 0 0 20px var(--primary-glow);
+            padding: 5px;
+            background: var(--bg-color);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
+            100% { transform: translateY(0px) rotateY(0deg); }
+        }
+
+        /* Titres de section */
+        .section-title {
+            font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
         }
         .section-title::after {
             content: '';
-            width: 60px;
-            height: 3px;
-            background-color: #2a5298;
             position: absolute;
-            bottom: -10px;
             left: 0;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
         }
-        .card {
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+
+        /* Boutons Futuristes */
+        .btn-cyber {
+            background: transparent;
+            color: var(--primary-glow);
+            border: 1px solid var(--primary-glow);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
         }
-        .card:hover {
-            transform: translateY(-5px);
+        .btn-cyber:hover {
+            background: var(--primary-glow);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
+
+        /* Badges de compétences */
         .badge-tech {
-            background-color: #e9ecef;
-            color: #2a5298;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            background: rgba(112, 0, 255, 0.2);
+            border: 1px solid var(--secondary-glow);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
-        footer {
-            background-color: #212529;
-            color: white;
-            padding: 30px 0;
+        .badge-tech:hover {
+            background: var(--secondary-glow);
+            box-shadow: 0 0 15px var(--secondary-glow);
+            transform: scale(1.1);
+        }
+
+        /* Section padding */
+        .section-padding { padding: 100px 0; }
+        
+        /* Timeline personnalisée */
+        .timeline-item {
+            border-left: 2px solid var(--primary-glow);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#accueil"><i class="fa-solid fa-laptop-code me-2"></i>Muko-tech</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="#accueil"><i class="fa-solid fa-microchip me-2"></i>Eben.M</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#qui-suis-je">Qui suis-je ?</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#parcours">Mon Parcours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#realisations">Mes Réalisations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#veille-technologique">Veille Technologique</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#veille-juridique">Veille Juridique</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#passions">Passions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#qui-suis-je">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#parcours">Parcours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#realisations">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#veilles">Veilles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header id="accueil" class="hero-section text-center">
+    <section id="accueil" class="hero-section">
         <div class="container">
-            <h1 class="display-4 fw-bold">Bienvenue sur mon Portfolio Numérique</h1>
-            <p class="lead mt-3">Vitrine électronique de mes compétences, projets et apprentissages au cours de ma formation.</p>
-            <a href="#qui-suis-je" class="btn btn-light btn-lg mt-4 px-4">Découvrir mon profil</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6 z-1">
+                    <p class="text-uppercase tracking-wider mb-2" style="color: var(--primary-glow); letter-spacing: 3px;">Portfolio Étudiant SIO</p>
+                    <h1 class="hero-title">EBEN MUKOKESHI</h1>
+                    <h3 class="h4 mt-3 mb-4 text-light">Futur Expert en Cybersécurité & Réseaux</h3>
+                    <p class="lead text-muted mb-5">Bienvenue dans mon espace virtuel. Découvrez mon apprentissage, mes compétences techniques et mes réalisations au sein de ma formation informatique.</p>
+                    <a href="#realisations" class="btn-cyber me-3"><i class="fa-solid fa-rocket me-2"></i>Mes Projets</a>
+                    <a href="#contact" class="btn-cyber" style="border-color: var(--secondary-glow); color: var(--secondary-glow);"><i class="fa-solid fa-satellite-dish me-2"></i>Me Contacter</a>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0 z-1">
+                    <div class="profile-container">
+                        <img src="photo-profil.jpg" alt="Photo de profil de Eben" class="profile-img shadow-lg" onerror="this.src='https://via.placeholder.com/300/0a0e17/00f3ff?text=Insérer+Photo'">
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <section id="qui-suis-je" class="section-padding bg-white">
+    <section id="qui-suis-je" class="section-padding">
         <div class="container">
             <h2 class="section-title">Qui suis-je ?</h2>
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <p class="lead">Étudiant en informatique et auditeur technique junior en formation.</p>
-                    <p>Actuellement en première année de formation, je me passionne pour le développement d'applications, l'administration système et la cybersécurité. À travers mes cours et mes projets, j'apprends pas à pas à concevoir, optimiser et sécuriser les infrastructures numériques.</p>
-                    <p>Ce portfolio évolutif a pour objectif de témoigner de mes compétences académiques et professionnelles naissantes, tout en structurant mes réalisations phares.</p>
-                    <div class="mt-4">
-                        <a href="cv.pdf" class="btn btn-primary me-2" download><i class="fa-solid fa-file-pdf me-2"></i>Télécharger mon CV (PDF)</a>
-                        <a href="#parcours" class="btn btn-outline-secondary">Consulter mon parcours en ligne</a>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="glass-card p-4">
+                        <h4 class="text-white mb-3"><i class="fa-solid fa-terminal text-info me-2"></i>Étudiant Passionné & Technicien en Devenir</h4>
+                        <p class="text-muted">Actuellement étudiant en <strong>BTS Services Informatiques aux Organisations (SIO)</strong>, je me spécialise dans l'administration des systèmes, les réseaux et la sécurité des infrastructures numériques.</p>
+                        <p class="text-muted">Mon objectif est clair : comprendre, construire et protéger les architectures de demain. Doté d'un esprit analytique et logique, je m'investis pleinement dans la manipulation d'outils de développement, de bases de données et de frameworks modernes.</p>
+                        
+                        <div class="mt-4 border-top border-secondary pt-3">
+                            <h5 class="text-white mb-3">Mes Passions & Hobbies</h5>
+                            <div class="d-flex flex-wrap gap-3">
+                                <span class="badge bg-dark border border-secondary p-2"><i class="fa-solid fa-microchip me-2"></i>Technologie & Veille</span>
+                                <span class="badge bg-dark border border-secondary p-2"><i class="fa-solid fa-headphones me-2"></i>Musique</span>
+                                <span class="badge bg-dark border border-secondary p-2"><i class="fa-solid fa-futbol me-2"></i>Football & Sport</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <a href="cv eben mukokeshi (1).pdf" class="btn-cyber" target="_blank"><i class="fa-solid fa-download me-2"></i>Télécharger mon CV (PDF)</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-center mt-4 mt-md-0">
-                    <div class="p-5 bg-light rounded-circle d-inline-block shadow-sm">
-                        <i class="fa-solid fa-graduation-cap fa-5x text-secondary"></i>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="glass-card p-4 text-center h-100 d-flex flex-column justify-content-center">
+                        <h5 class="text-white mb-4">Profil LinkedIn</h5>
+                        <div class="badge-base LI-profile-badge mx-auto" data-locale="fr_FR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="ebenmukokeshi" data-version="v1">
+                            <a class="badge-base__link LI-simple-link" href="https://fr.linkedin.com/in/ebenmukokeshi?trk=profile-badge">Eben Mukokeshi</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="parcours" class="section-padding">
+    <section id="parcours" class="section-padding" style="background: rgba(0,0,0,0.3);">
         <div class="container">
             <h2 class="section-title">Mon Parcours & Compétences</h2>
-            
             <div class="row">
-                <div class="col-md-6">
-                    <h3 class="h5 mb-4 text-primary"><i class="fa-solid fa-book-open me-2"></i>Scolarité & Formations</h3>
-                    <div class="border-start border-2 border-primary ps-3 mb-4">
-                        <span class="text-muted small">En cours (2025 - 2026)</span>
-                        <h5>BTS Services Informatiques aux Organisations (SIO)</h5>
-                        <p class="small text-muted">1ère Année - Apprentissage des bases du développement de solutions logicielles, de la gestion de réseaux, et de la cybersécurité.</p>
-                    </div>
-                    <div class="border-start border-2 border-primary ps-3 mb-4">
-                        <span class="text-muted small">2026</span>
-                        <h5>Formation Technique HVDC - LTSA (Module 1)</h5>
-                        <p class="small text-muted">Programme d'étude et d'initiation technique réalisé dans le cadre de l'analyse des infrastructures de la SNEL Congo.</p>
-                    </div>
-
-                    <h3 class="h5 mb-4 mt-5 text-primary"><i class="fa-solid fa-briefcase me-2"></i>Expériences en Milieu Professionnel</h3>
-                    <div class="border-start border-2 border-success ps-3 mb-4">
-                        <span class="text-muted small">2026 (6 semaines)</span>
-                        <h5>Stagiaire en Informatique</h5>
-                        <p class="fw-bold mb-0">BNP Paribas</p>
-                        <p class="small text-muted">Immersion en milieu bancaire, observation des architectures réseaux, traitement des requêtes d'infrastructure et maintenance de premier niveau.</p>
-                    </div>
-                    <div class="border-start border-2 border-success ps-3 mb-4">
-                        <span class="text-muted small">Depuis 2025</span>
-                        <h5>Projets Personnels &amp; Auto-formation</h5>
-                        <p class="small text-muted">Développement autonome d'applications web, manipulation d'outils de simulation de réseaux et exercices pratiques en laboratoire virtuel.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 mt-5 mt-md-0">
-                    <h3 class="h5 mb-4 text-primary"><i class="fa-solid fa-gear me-2"></i>Compétences en Cours d'Acquisition</h3>
-                    
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Développement Web (Full-Stack)</label>
-                        <div>
-                            <span class="badge badge-tech p-2 fs-6">PHP</span>
-                            <span class="badge badge-tech p-2 fs-6">MySQL</span>
-                            <span class="badge badge-tech p-2 fs-6">HTML5 / CSS3</span>
-                            <span class="badge badge-tech p-2 fs-6">Bootstrap</span>
+                <div class="col-lg-6">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="mb-4 text-white"><i class="fa-solid fa-route me-2" style="color: var(--primary-glow);"></i>Évolution Académique & Pro</h4>
+                        
+                        <div class="timeline-item">
+                            <h5 class="text-white">Stage Technicien Proximité (IT Support)</h5>
+                            <h6 style="color: var(--primary-glow);">BNP Paribas, Paris | Mai - Juin 2026</h6>
+                            <p class="text-muted small">Configuration des postes de travail, accueil IT des nouveaux arrivants. Gestion des tickets d'incidents via ServiceNow. Enrôlement de badges et préparation des infrastructures de réunion.</p>
                         </div>
-                    </div>
 
-                    <div class="mb-3 mt-4">
-                        <label class="form-label fw-bold">Réseaux & Systèmes</label>
-                        <div>
-                            <span class="badge badge-tech p-2 fs-6">Cisco Packet Tracer</span>
-                            <span class="badge badge-tech p-2 fs-6">Configuration VM</span>
-                            <span class="badge badge-tech p-2 fs-6">Adressage IP & Subnetting</span>
-                            <span class="badge badge-tech p-2 fs-6">Windows Server (2012/2019)</span>
-                            <span class="badge badge-tech p-2 fs-6">Services DHCP / DNS</span>
+                        <div class="timeline-item">
+                            <h5 class="text-white">BTS Services Informatiques aux Organisations</h5>
+                            <h6 style="color: var(--primary-glow);">Lycée Parc des Loges, Évry | 2025 - 2027</h6>
+                            <p class="text-muted small">Formation supérieure spécialisée en administration réseau, cybersécurité, développement d'applications et gestion de bases de données.</p>
                         </div>
-                    </div>
 
-                    <div class="mb-3 mt-4">
-                        <label class="form-label fw-bold">Cybersécurité & Algorithmique</label>
-                        <div>
-                            <span class="badge badge-tech p-2 fs-6">Principes de Sécurité des Serveurs</span>
-                            <span class="badge badge-tech p-2 fs-6">Sensibilisation à la Confidentialité</span>
-                            <span class="badge badge-tech p-2 fs-6">Compréhension des Injections SQL</span>
-                            <span class="badge badge-tech p-2 fs-6">Initiation à la Cryptographie (César)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="p-4 bg-light rounded border-start border-4 border-primary">
-                        <h5><i class="fa-solid fa-bullseye me-2"></i>Mon Projet Professionnel</h5>
-                        <p class="mb-0">À l'issue de mon BTS SIO, j'envisage de poursuivre mes études vers une spécialisation en cybersécurité et en audit technique des infrastructures. Mon objectif à terme, après consolidation de mes compétences et de mes expériences, est d'évoluer vers les métiers d'analyste en sécurité ou d'auditeur technique pour aider les organisations à se prémunir des cybermenaces.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="realisations" class="section-padding bg-white">
-        <div class="container">
-            <h2 class="section-title">Mes Réalisations / Projets</h2>
-            <p class="text-muted">Conformément aux exigences, chaque projet décrit précisément le contexte, les besoins et le bilan associé.</p>
-            
-            <div class="row g-4 mt-2">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Projet Académique / PPE</span>
-                            <h4 class="card-title h5 fw-bold">Site Marchand "NOMADE"</h4>
-                            <p class="card-text small text-muted">Création d'un catalogue de voyage dynamique intégrant un espace client sécurisé.</p>
-                            <hr>
-                            <ul class="list-unstyled small mb-3">
-                                <li><strong>Période :</strong> 2026</li>
-                                <li><strong>Équipe :</strong> Individuel</li>
-                                <li><strong>Langages/Outils :</strong> PHP, MySQL, CSS</li>
-                            </ul>
-                            <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalNomade">Détails du projet</button>
+                        <div class="timeline-item">
+                            <h5 class="text-white">Baccalauréat Technologique</h5>
+                            <h6 style="color: var(--primary-glow);">Lycée Rosa Parks, Montgeron | 2024 - 2025</h6>
+                            <p class="text-muted small">Développement des compétences analytiques. Réalisation de projets web (HTML), modélisation de bases de données relationnelles et requêtes SQL.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <span class="badge bg-success mb-2">Stage Professionnel</span>
-                            <h4 class="card-title h5 fw-bold">Stage d'Immersion Technique</h4>
-                            <p class="card-text small text-muted">Mission de 6 semaines axée sur le support d'infrastructure et la maintenance de proximité.</p>
-                            <hr>
-                            <ul class="list-unstyled small mb-3">
-                                <li><strong>Période :</strong> 2026 (6 semaines)</li>
-                                <li><strong>Entreprise :</strong> BNP Paribas</li>
-                                <li><strong>Rôle :</strong> Stagiaire IT</li>
-                            </ul>
-                            <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalBnp">Détails de la mission</button>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="mb-4 text-white"><i class="fa-solid fa-code me-2" style="color: var(--secondary-glow);"></i>Arsenal Technologique</h4>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted mb-2">Langages & Web</h6>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge-tech">HTML5 / CSS3</span>
+                                <span class="badge-tech">PHP</span>
+                                <span class="badge-tech">SQL</span>
+                                <span class="badge-tech">Bootstrap</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <span class="badge bg-secondary mb-2">Étude / Projet Pédagogique</span>
-                            <h4 class="card-title h5 fw-bold">Dossier Technique HVDC - LTSA</h4>
-                            <p class="card-text small text-muted">Analyse de modules de formation pour la gestion de réseaux électriques haute tension.</p>
-                            <hr>
-                            <ul class="list-unstyled small mb-3">
-                                <li><strong>Période :</strong> Début 2026</li>
-                                <li><strong>Partenaire :</strong> SNEL Congo (Module 1)</li>
-                                <li><strong>Méthode :</strong> Analyse documentaire & technique</li>
-                            </ul>
-                            <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalSnel">Détails de l'étude</button>
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted mb-2">Systèmes & Réseaux</h6>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge-tech">Windows Server</span>
+                                <span class="badge-tech">Linux</span>
+                                <span class="badge-tech">Cisco Packet Tracer</span>
+                                <span class="badge-tech">Adressage IP / Subnetting</span>
+                                <span class="badge-tech">DHCP / DNS</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted mb-2">Outils & Méthodologie</h6>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge-tech">ServiceNow (Ticketing)</span>
+                                <span class="badge-tech">Modélisation de BDD</span>
+                                <span class="badge-tech">Sécurité des serveurs</span>
+                                <span class="badge-tech">Cryptographie (Bases)</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-3 rounded" style="background: rgba(0, 243, 255, 0.1); border-left: 4px solid var(--primary-glow);">
+                            <h5 class="text-white"><i class="fa-solid fa-crosshairs me-2"></i>Mon Projet Professionnel</h5>
+                            <p class="text-muted small mb-0">À l'issue de mon BTS SIO, je souhaite intégrer une spécialisation en <strong>Cybersécurité</strong> ou <strong>Administration Systèmes et Réseaux</strong>. Je suis actuellement à la recherche d'une alternance pour mettre en pratique ma veille technologique et sécuriser des infrastructures d'envergure.</p>
                         </div>
                     </div>
                 </div>
@@ -251,135 +331,105 @@
         </div>
     </section>
 
-    <div class="modal fade" id="modalNomade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title fw-bold">Projet NOMADE - Catalogue de voyage</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <h6><strong>Contexte :</strong></h6>
-                    <p class="small text-muted">Dans le cadre des ateliers de professionnalisation (PPE), la demande consistait à concevoir un site web dynamique de présentation et de commande de voyages.</p>
-                    <h6><strong>Besoins identifiés :</strong></h6>
-                    <p class="small text-muted">Mettre en place un système d'authentification utilisateur, une gestion des sessions pour sécuriser le panier d'achat interne, et une persistance des données via un SGBD.</p>
-                    <h6><strong>Travail réalisé & Méthodes :</strong></h6>
-                    <p class="small text-muted">Modélisation de la base de données relationnelle MySQL, écriture des scripts de connexion et d'inscription en PHP, implémentation des algorithmes d'ajout/suppression d'éléments du panier d'achat, et mise en forme esthétique via CSS.</p>
-                    <div class="my-3 p-3 bg-light border text-center text-muted small"><i class="fa-regular fa-image me-2"></i>[Ajoutez ici une capture d'écran de l'interface ou du panier de NOMADE]</div>
-                    <h6><strong>Bilan :</strong></h6>
-                    <p class="small text-muted mb-0">Ce projet m'a permis de maîtriser les fondamentaux de la programmation web dynamique orientée données et d'appréhender concrètement la gestion des sessions applicatives.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalBnp" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title fw-bold">Stage chez BNP Paribas</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <h6><strong>Contexte :</strong></h6>
-                    <p class="small text-muted">Stage obligatoire de première année de BTS SIO d'une durée de 6 semaines au sein des services informatiques.</p>
-                    <h6><strong>Besoins identifiés :</strong></h6>
-                    <p class="small text-muted">Comprendre l'organisation d'un support en entreprise, participer à la maintenance de proximité du parc informatique et veiller à la bonne application des consignes de sécurité.</p>
-                    <h6><strong>Travail réalisé & Méthodes :</strong></h6>
-                    <p class="small text-muted">Suivi d'outils de ticketing d'entreprise, assistance au diagnostic de pannes de connectivité réseau, observation du déploiement d'images système standardisées sur les postes de travail, et sensibilisation aux règles strictes de sécurité de l'infrastructure financière.</p>
-                    <h6><strong>Bilan :</strong></h6>
-                    <p class="small text-muted mb-0">Une immersion forte qui a consolidé mes connaissances pratiques en support de proximité et m'a sensibilisé aux impératifs indispensables de confidentialité des données en milieu professionnel.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalSnel" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary text-white">
-                    <h5 class="modal-title fw-bold">Analyse Technique HVDC - SNEL Congo</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <h6><strong>Contexte :</strong></h6>
-                    <p class="small text-muted">Étude théorique et formalisation documentaire sur les infrastructures de transport d'énergie de la SNEL Congo.</p>
-                    <h6><strong>Besoins identifiés :</strong></h6>
-                    <p class="small text-muted">Structurer et assimiler les connaissances relatives au Module 1 de la formation technique HVDC - LTSA afin d'en cartographier les contraintes technologiques sous un angle d'apprentissage personnel.</p>
-                    <h6><strong>Travail réalisé & Méthodes :</strong></h6>
-                    <p class="small text-muted">Analyse approfondie des architectures réseaux présentées dans les manuels officiels, synthèse des dispositifs d'automatisation, et production d'un rapport synthétique structuré des compétences cibles.</p>
-                    <h6><strong>Bilan :</strong></h6>
-                    <p class="small text-muted mb-0">Cette étude de cas m'a permis d'élargir mes compétences en ingénierie documentaire et de comprendre la corrélation technique entre les infrastructures énergétiques stratégiques et leurs systèmes de gestion associés.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section id="veille-technologique" class="section-padding">
+    <section id="realisations" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Veille Technologique</h2>
-            <div class="p-4 bg-white rounded shadow-sm mb-4">
-                <h5>Thématique étudiée : <span class="text-primary">La Cybersécurité et la Sécurité des Serveurs</span></h5>
-                <p class="text-muted">Définition : La veille technologique est un processus systématique visant à s'informer sur les innovations, évolutions et nouvelles menaces dans un domaine précis afin de maintenir ses compétences à jour.</p>
+            <h2 class="section-title">Mes Réalisations</h2>
+            <div class="row g-4">
                 
-                <div class="border-start border-3 border-primary ps-3 my-4">
-                    <h6 class="fw-bold text-dark mb-1">Article exemple : Évolution des attaques par Injection SQL et contres-mesures modernes</h6>
-                    <p class="small text-muted mb-2"><strong>Date de publication :</strong> Mars 2026 | <strong>Source :</strong> Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI)</p>
-                    <p class="small"><strong>Résumé pédagogique :</strong> Cet article détaille l'adaptation des mécanismes de filtrage et d'analyse comportementale sur les serveurs web pour intercepter les requêtes malveillantes complexes. L'accent est mis sur l'utilisation systématique des requêtes préparées (PDO en PHP) et la mise en œuvre de pare-feu applicatifs (WAF) pour prémunir les bases de données d'exfiltrations d'informations.</p>
-                    <a href="https://www.ssi.gouv.fr" target="_blank" class="btn btn-link btn-sm p-0 text-decoration-none"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Consulter la source officielle</a>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <i class="fa-solid fa-globe fa-2x" style="color: var(--primary-glow);"></i>
+                            <span class="badge bg-primary">PPE / Académique</span>
+                        </div>
+                        <h4 class="text-white">Projet NOMADE</h4>
+                        <p class="small text-muted"><strong>Contexte :</strong> Développement dynamique web.</p>
+                        <p class="small text-muted"><strong>Besoins :</strong> Création d'un catalogue de voyages, authentification sécurisée, et système de panier virtuel géré par sessions.</p>
+                        <p class="small text-muted"><strong>Outils :</strong> PHP, MySQL, CSS.</p>
+                        <p class="small text-muted"><strong>Bilan :</strong> Maîtrise des interactions client/serveur et gestion sécurisée des données en session.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <i class="fa-solid fa-server fa-2x text-success"></i>
+                            <span class="badge bg-success">Stage Pro</span>
+                        </div>
+                        <h4 class="text-white">Support IT - BNP Paribas</h4>
+                        <p class="small text-muted"><strong>Contexte :</strong> Immersion en environnement bancaire sécurisé.</p>
+                        <p class="small text-muted"><strong>Besoins :</strong> Maintien en condition opérationnelle du parc informatique et résolution d'incidents (mai-juin 2026).</p>
+                        <p class="small text-muted"><strong>Outils :</strong> ServiceNow, Outils d'administration Windows.</p>
+                        <p class="small text-muted"><strong>Bilan :</strong> Compréhension des enjeux de sécurité en production et de la relation utilisateur.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <i class="fa-solid fa-seedling fa-2x text-warning"></i>
+                            <span class="badge bg-warning text-dark">Gestion de Projet</span>
+                        </div>
+                        <h4 class="text-white">Mini-entreprise Jardikit</h4>
+                        <p class="small text-muted"><strong>Contexte :</strong> Année 2023-2024 (Lycée Louis Pergaud).</p>
+                        <p class="small text-muted"><strong>Besoins :</strong> Conception, commercialisation de kits de jardinage et gestion des stocks.</p>
+                        <p class="small text-muted"><strong>Compétences :</strong> Marketing, gestion d'équipe, planification.</p>
+                        <p class="small text-muted"><strong>Bilan :</strong> Développement précoce des logiques de gestion de projet et de travail collaboratif.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="veilles" class="section-padding" style="background: rgba(0,0,0,0.3);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h2 class="section-title">Veille Technologique</h2>
+                    <div class="glass-card p-4">
+                        <h5 class="text-white"><i class="fa-solid fa-shield-virus me-2 text-danger"></i>Thème : Sécurité et Vulnérabilités Web</h5>
+                        <p class="text-muted small">Processus régulier de recherche pour anticiper les évolutions des cybermenaces.</p>
+                        <div class="mt-3 p-3 rounded" style="background: rgba(255,255,255,0.05);">
+                            <h6 class="text-info">Article : Évolution des attaques par Injection SQL</h6>
+                            <p class="small text-muted mb-1"><strong>Source :</strong> ANSSI | <strong>Date :</strong> 2026</p>
+                            <p class="small text-muted">Analyse des nouvelles méthodes de contournement des bases de données et des protocoles de défense via l'utilisation de requêtes préparées (PDO) et de pare-feu applicatifs (WAF).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h2 class="section-title">Veille Juridique</h2>
+                    <div class="glass-card p-4">
+                        <h5 class="text-white"><i class="fa-solid fa-scale-balanced me-2 text-primary"></i>Thème : Droit du Numérique</h5>
+                        <p class="text-muted small">Étude du cadre légal régissant l'informatique et la responsabilité des acteurs.</p>
+                        <div class="mt-3 p-3 rounded" style="background: rgba(255,255,255,0.05);">
+                            <h6 class="text-info">Axe d'étude : RGPD & Journaux de connexion</h6>
+                            <p class="small text-muted mb-1"><strong>Source :</strong> CNIL | <strong>Date :</strong> 2026</p>
+                            <p class="small text-muted">Veille sur les obligations légales de conservation des logs serveurs et les procédures réglementaires de notification en cas de violation de données personnelles.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="veille-juridique" class="section-padding bg-white">
+    <section id="contact" class="section-padding text-center">
         <div class="container">
-            <h2 class="section-title">Veille Juridique</h2>
-            <div class="p-4 bg-light rounded border">
-                <h5><i class="fa-solid fa-gavel text-secondary me-2"></i>Réglementations et Droit du Numérique</h5>
-                <p class="text-muted">Cette section retrace l'étude du cadre légal régissant l'informatique, les données à caractère personnel et la responsabilité des différents acteurs (en lien avec les enseignements d'EDM).</p>
-                <div class="mt-3">
-                    <h6>Axe d'étude : Le RGPD et la protection des données des utilisateurs</h6>
-                    <p class="small text-muted mb-0">Suivi des évolutions législatives concernant le consentement des utilisateurs en ligne, la durée de conservation des journaux de connexions sur les serveurs applicatifs, et l'obligation légale de notification des violations de données.</p>
-                </div>
-            </div>
+            <h2 class="section-title text-center">Initialiser une Connexion</h2>
+            <p class="text-muted mb-5">Je suis activement à la recherche d'une opportunité professionnelle (alternance ou stage). N'hésitez pas à me contacter via mon réseau professionnel.</p>
+            
+            <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" class="btn-cyber mx-2 mb-3">
+                <i class="fa-brands fa-linkedin fa-lg me-2"></i>Contacter sur LinkedIn
+            </a>
+            <a href="mailto:ebenmukokeshi@gmail.com" class="btn-cyber mx-2 mb-3" style="border-color: var(--secondary-glow); color: var(--secondary-glow);">
+                <i class="fa-solid fa-envelope fa-lg me-2"></i>Envoyer un E-mail
+            </a>
         </div>
     </section>
 
-    <section id="passions" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Hobbies &amp; Intérêts</h2>
-            <div class="row text-center g-4">
-                <div class="col-md-4">
-                    <div class="p-4 bg-white rounded shadow-sm">
-                        <i class="fa-solid fa-soccer-ball fa-3x text-success mb-3"></i>
-                        <h5>Football International</h5>
-                        <p class="small text-muted mb-0">Suivi des compétitions majeures et des performances des sélections nationales de France, du Portugal et du Congo.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white rounded shadow-sm">
-                        <i class="fa-solid fa-shield-halved fa-3x text-warning mb-3"></i>
-                        <h5>Énigmes &amp; Cryptographie</h5>
-                        <p class="small text-muted mb-0">Résolution de challenges techniques de chiffrement classique (Chiffre de César) et exercices de logique.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white rounded shadow-sm">
-                        <i class="fa-solid fa-laptop-file fa-3x text-info mb-3"></i>
-                        <h5>Veille Informatique</h5>
-                        <p class="small text-muted mb-0">Exploration des nouvelles technologies, auto-formation et suivi des tendances du secteur numérique.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="text-center">
-        <div class="container">
-            <p class="mb-1">&copy; 2026 Muko-tech | Portfolio créé individuellement dans le cadre du BTS SIO 1</p>
-            <p class="small text-muted mb-0">Fait à la main à l'aide de Bootstrap 5 - Droits d'auteur et d'image respectés.</p>
-        </div>
+    <footer class="py-4 text-center border-top" style="border-color: var(--glass-border) !important;">
+        <p class="text-muted small mb-0">© 2026 Eben Mukokeshi - Portfolio développé "à la main" dans le cadre du BTS SIO 1.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
