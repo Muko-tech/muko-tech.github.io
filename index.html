@@ -87,6 +87,11 @@
   #accueil{
     min-height:92vh; display:flex; flex-direction:column; justify-content:center;
   }
+  .hero-photo{
+    width:108px; height:108px; border-radius:50%; object-fit:cover;
+    border:3px solid var(--bg-soft); box-shadow:0 0 0 1px var(--line);
+    margin-bottom:26px;
+  }
   .hero-kicker{font-size:14px; font-weight:600; color:var(--navy-light); margin-bottom:14px; letter-spacing:.03em;}
   .hero-title{font-size:50px; color:var(--navy); line-height:1.12;}
   .hero-role{font-size:17px; color:var(--text-dim); margin-top:14px; max-width:560px;}
@@ -171,6 +176,7 @@
 
     <!-- ACCUEIL -->
     <section id="accueil">
+      <img src="eben_photo.jpg" alt="Photo d'Eben Mukokeshi" class="hero-photo">
       <div class="hero-kicker">Portfolio numérique — BTS SIO option SISR</div>
       <h1 class="hero-title">Eben Mukokeshi</h1>
       <p class="hero-role">
@@ -194,7 +200,7 @@
           Je m'appelle Eben Mukokeshi, étudiant en BTS Services Informatiques aux Organisations (SIO),
           option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), au Lycée Parc des Loges à Évry.
           Je m'intéresse à l'administration système, aux réseaux et au développement web.
-       
+          Je parle français (courant), lingala (courant) et anglais (intermédiaire).
         </p>
         <div class="note"><strong>Confidentialité :</strong> conformément aux consignes du portfolio, aucune coordonnée personnelle (adresse, téléphone) n'est publiée ici — uniquement mon nom et mes liens professionnels.</div>
       </div>
@@ -204,7 +210,7 @@
           <h3>Mon CV</h3>
           <p>Version téléchargeable au format PDF.</p>
           <a href="cv_eben_mukokeshi.pdf" download>↓ Télécharger mon CV (PDF)</a>
-         
+          <span class="badge-todo">fichier à déposer</span>
         </div>
         <div class="card">
           <h3>Centres d'intérêt</h3>
