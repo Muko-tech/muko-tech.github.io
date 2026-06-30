@@ -1,476 +1,391 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eben Mukokeshi | Portfolio </title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts: Inter pour un rendu sobre et épuré -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Script LinkedIn Badge -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    
-    <style>
-        /* Palette de couleurs : Sombre, sobre et corporatif */
-        :root {
-            --bg-main: #0b0f19;         /* Fond principal ultra sombre */
-            --bg-card: #131926;         /* Fond des cartes gris bleuté très foncé */
-            --border-color: #222c41;    /* Bordures fines et discrètes */
-            --accent-color: #3b82f6;    /* Bleu professionnel discret */
-            --text-primary: #f8fafc;    /* Texte important blanc cassé */
-            --text-secondary: #94a3b8;  /* Texte secondaire gris */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eben Mukokeshi — Portfolio BTS SIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0a2540;
+    --navy-2: #123a5e;
+    --navy-light: #2c6ca8;
+    --bg: #ffffff;
+    --bg-soft: #f4f7fa;
+    --line: #dfe6ed;
+    --text: #1c2b39;
+    --text-dim: #5b6b7a;
+    --white: #ffffff;
+    --display: 'Manrope', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+  }
+  a{color:var(--navy-light); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ::selection{background:var(--navy); color:#fff;}
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            padding-top: 75px;
-        }
+  .layout{display:flex; min-height:100vh;}
 
-        /* Barre de navigation sobre et fixe */
-        .navbar {
-            background-color: rgba(11, 15, 25, 0.95) !important;
-            border-bottom: 1px solid var(--border-color);
-            backdrop-filter: blur(8px);
-        }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-primary) !important;
-            letter-spacing: 0.5px;
-        }
-        .navbar-brand span {
-            color: var(--accent-color);
-        }
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            padding: 0.5rem 1rem !important;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: var(--text-primary) !important;
-        }
+  /* Sidebar */
+  nav.sidebar{
+    width:230px; flex-shrink:0;
+    background:var(--navy);
+    padding:36px 0;
+    position:sticky; top:0; height:100vh;
+    overflow-y:auto;
+  }
+  .sidebar .brand{
+    font-family:var(--display); font-weight:800; font-size:17px; color:#fff;
+    padding:0 26px 26px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:18px;
+  }
+  .sidebar .brand small{display:block; font-weight:500; font-size:11.5px; color:#9db3c9; margin-top:4px; letter-spacing:.04em;}
+  .sidebar ul{list-style:none;}
+  .sidebar li a{
+    display:block; font-size:14px; font-weight:500;
+    color:#b9c8d8; padding:11px 26px; border-left:3px solid transparent;
+    transition:all .15s;
+  }
+  .sidebar li a:hover, .sidebar li a.active{
+    color:#fff; background:rgba(255,255,255,0.06); border-left-color:var(--navy-light);
+    text-decoration:none;
+  }
+  .sidebar .linkedin{
+    margin:26px 26px 0; padding-top:18px; border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .sidebar .linkedin a{color:#9db3c9; font-size:13px; font-weight:600;}
+  .sidebar .linkedin a:hover{color:#fff;}
 
-        /* Cartes épurées professionnelles */
-        .prof-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 2rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .prof-card:hover {
-            transform: translateY(-4px);
-            border-color: #334155;
-        }
+  main{flex:1; min-width:0;}
+  section{
+    padding:84px 64px;
+    border-bottom:1px solid var(--line);
+    max-width:920px;
+  }
+  @media (max-width:900px){
+    .layout{flex-direction:column;}
+    nav.sidebar{width:100%; height:auto; position:relative; padding:20px 0;}
+    section{padding:48px 24px;}
+  }
 
-        /* En-tête des sections */
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
+  .eyebrow{
+    font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--navy-light); margin-bottom:14px;
+  }
+  h1,h2,h3{font-family:var(--display); font-weight:800; color:var(--navy); letter-spacing:-0.01em;}
+  h2{font-size:28px; margin-bottom:8px;}
+  .section-sub{color:var(--text-dim); margin-bottom:38px; font-size:15px;}
 
-        /* Section d'accueil (Hero) */
-        .hero-section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .hero-name {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-        }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
+  /* HERO */
+  #accueil{
+    min-height:92vh; display:flex; flex-direction:column; justify-content:center;
+  }
+  .hero-kicker{font-size:14px; font-weight:600; color:var(--navy-light); margin-bottom:14px; letter-spacing:.03em;}
+  .hero-title{font-size:50px; color:var(--navy); line-height:1.12;}
+  .hero-role{font-size:17px; color:var(--text-dim); margin-top:14px; max-width:560px;}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--sans); font-weight:600; font-size:14px; padding:11px 22px; border-radius:6px;
+    border:1.5px solid var(--navy);
+  }
+  .btn-primary{background:var(--navy); color:#fff;}
+  .btn-primary:hover{background:var(--navy-2); text-decoration:none;}
+  .btn-ghost{color:var(--navy); background:transparent;}
+  .btn-ghost:hover{background:var(--bg-soft); text-decoration:none;}
 
-        /* Image de profil réaliste */
-        .profile-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        .profile-image {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
+  /* Cards */
+  .card{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:8px;
+    padding:26px 28px; margin-bottom:18px;
+  }
+  .card h3{font-size:17px; margin-bottom:4px; color:var(--navy);}
+  .card .meta{font-size:12.5px; font-weight:600; color:var(--navy-light); margin-bottom:14px; display:block;}
+  .card p{color:var(--text-dim); font-size:14.5px; margin-bottom:8px;}
+  .card p strong{color:var(--text); font-weight:600;}
+  .card ul{margin:10px 0 0 18px; color:var(--text-dim); font-size:14.5px;}
+  .card ul li{margin-bottom:5px;}
 
-        /* Boutons sobres */
-        .btn-primary-custom {
-            background-color: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-primary-custom:hover {
-            background-color: #2563eb;
-            color: #fff;
-        }
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:700px){.grid-2{grid-template-columns:1fr;}}
 
-        .btn-secondary-custom {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1.5rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-secondary-custom:hover {
-            background-color: #1e293b;
-            color: var(--text-primary);
-        }
+  .skill-block h4{font-family:var(--display); color:var(--navy); font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px;}
+  .skill-block h4:first-child{margin-top:0;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+  .pill{font-size:13px; font-weight:500; background:#fff; color:var(--navy); border:1px solid var(--line); padding:6px 13px; border-radius:5px;}
 
-        /* Badges de compétences discrets */
-        .tech-tag {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            color: #e2e8f0;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 6px;
-            display: inline-block;
-            margin: 0.25rem;
-        }
+  .timeline{border-left:2px solid var(--line); padding-left:26px; margin-left:6px;}
+  .timeline .card{position:relative;}
+  .timeline .card::before{
+    content:""; position:absolute; left:-33px; top:30px; width:9px; height:9px;
+    border-radius:50%; background:var(--navy-light); box-shadow:0 0 0 4px #e4eef7;
+  }
 
-        /* Listes d'historique (Timeline) */
-        .history-item {
-            border-left: 1px solid var(--border-color);
-            padding-left: 1.5rem;
-            position: relative;
-            padding-bottom: 2rem;
-        }
-        .history-item::before {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 4px;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-        }
-        .history-item:last-child {
-            padding-bottom: 0;
-        }
+  .note{
+    border-left:3px solid var(--navy-light); background:var(--bg-soft);
+    padding:14px 18px; border-radius:0 6px 6px 0; font-size:13.5px; color:var(--text-dim);
+    margin-top:18px;
+  }
+  .note strong{color:var(--navy);}
 
-        /* Structure des veilles */
-        .veille-block {
-            background-color: #0f1420;
-            border-left: 3px solid var(--accent-color);
-            padding: 1.25rem;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 1.5rem;
-        }
+  .badge-todo{
+    display:inline-block; font-size:11px; font-weight:600; color:var(--navy-light);
+    border:1px solid var(--line); background:#fff;
+    padding:3px 9px; border-radius:4px; margin-left:6px; vertical-align:middle;
+  }
 
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 2rem 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-    </style>
+  footer{
+    padding:34px 64px; font-size:13px; color:var(--text-dim);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  footer a{color:var(--navy-light); font-weight:600;}
+</style>
 </head>
 <body>
+<div class="layout">
 
-    <!-- Navigation unique et alignée -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#accueil">EBEN<span>.M</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-controls="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-center">
-                    <li class="nav-item"><a class="nav-link" href="#qui-suis-je">Profil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#parcours">Parcours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#realisations">Réalisations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#veilles">Veilles & CEJM</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav class="sidebar">
+    <div class="brand">Eben Mukokeshi<small>BTS SIO — SISR</small></div>
+    <ul>
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#identification">Identification</a></li>
+      <li><a href="#parcours">Mon parcours</a></li>
+      <li><a href="#projet-formation">Projet de formation</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#veille-techno">Veille technologique</a></li>
+      <li><a href="#veille-juridique">Veille juridique</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+    </ul>
+    <div class="linkedin">
+      <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" rel="noopener">↗ LinkedIn</a>
+    </div>
+  </nav>
 
-    <!-- Section Accueil / Présentation sobre -->
-    <section id="accueil" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="hero-name">Eben Mukokeshi</h1>
-                    <p class="hero-subtitle">Étudiant en BTS Services Informatiques aux Organisations (SIO)</p>
-                    <p class="text-secondary mb-4" style="max-width: 600px; line-height: 1.7;">
-                        Futur administrateur systèmes, réseaux et collaborateur en cybersécurité. Ce portfolio rassemble mes compétences théoriques, mes productions de veille réglementaire et mes retours d'expérience du milieu professionnel.
-                    </p>
-                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                        <a href="#realisations" class="btn-primary-custom">Consulter mes projets</a>
-                        <a href="cv eben mukokeshi (1).pdf" class="btn-secondary-custom" target="_blank"><i class="fa-solid fa-file-pdf me-2"></i>Télécharger le CV</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 text-center">
-                    <div class="profile-wrapper">
-                        <!-- Utilisation de ton image disponible image_62f561.png ou photo-profil.jpg -->
-                        <img src="image_62f561.png" alt="Eben Mukokeshi" class="profile-image shadow" onerror="this.src='https://via.placeholder.com/240/131926/ffffff?text=Eben+Mukokeshi'">
-                    </div>
-                </div>
-            </div>
-        </div>
+  <main>
+
+    <!-- ACCUEIL -->
+    <section id="accueil">
+      <div class="hero-kicker">Portfolio numérique — BTS SIO option SISR</div>
+      <h1 class="hero-title">Eben Mukokeshi</h1>
+      <p class="hero-role">
+        Étudiant en BTS Services Informatiques aux Organisations, option Systèmes &amp; Réseaux (SISR),
+        au Lycée Parc des Loges à Évry. Ce portfolio présente mon parcours, mes compétences techniques
+        et mes réalisations.
+      </p>
+      <div class="hero-actions">
+        <a href="#realisations" class="btn btn-primary">Voir mes réalisations</a>
+        <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+      </div>
     </section>
 
-    <!-- Profil détaillé (Règles CNIL respectées : pas de tel/adresse) -->
-    <section id="qui-suis-je" class="padding-section py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-8">
-                    <h2 class="section-title">Profil Professionnel</h2>
-                    <div class="prof-card">
-                        <h3 class="h5 text-white mb-3"><i class="fa-solid fa-user-gear me-2 text-primary"></i>Présentation</h3>
-                        <p class="text-secondary" style="line-height: 1.6;">
-                            Actuellement en première année de <strong>BTS SIO</strong>, je développe une expertise technique centrée sur la gestion des infrastructures réseaux, la sécurisation des environnements applicatifs et le déploiement de serveurs d'entreprise. Ma rigueur logique acquise au cours de mon parcours académique me permet de répondre avec pertinence aux problématiques informatiques des organisations contemporaines.
-                        </p>
-                        <hr class="border-secondary my-4">
-                        <h3 class="h5 text-white mb-3">Centres d'intérêt</h3>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="tech-tag"><i class="fa-solid fa-microchip me-2"></i>Veille technologique</span>
-                            <span class="tech-tag"><i class="fa-solid fa-music me-2"></i>Musique</span>
-                            <span class="tech-tag"><i class="fa-solid fa-futbol me-2"></i>Sport de haut niveau</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <h2 class="section-title">Réseau</h2>
-                    <div class="prof-card text-center d-flex flex-column align-items-center justify-content-center" style="min-height: 295px;">
-                        <!-- Intégration propre du badge LinkedIn officiel -->
-                        <div class="badge-base LI-profile-badge mx-auto" data-locale="fr_FR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="ebenmukokeshi" data-version="v1">
-                            <a class="badge-base__link LI-simple-link" href="https://fr.linkedin.com/in/ebenmukokeshi?trk=profile-badge">Eben Mukokeshi</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- IDENTIFICATION -->
+    <section id="identification">
+      <div class="eyebrow">Identification</div>
+      <h2>Qui suis-je ?</h2>
+      <p class="section-sub">Présentation</p>
+      <div class="card">
+        <p>
+          Je m'appelle Eben Mukokeshi, étudiant en BTS Services Informatiques aux Organisations (SIO),
+          option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), au Lycée Parc des Loges à Évry.
+          Je m'intéresse à l'administration système, aux réseaux et au développement web.
+          Je parle français (courant), lingala (courant) et anglais (intermédiaire).
+        </p>
+        <div class="note"><strong>Confidentialité :</strong> conformément aux consignes du portfolio, aucune coordonnée personnelle (adresse, téléphone) n'est publiée ici — uniquement mon nom et mes liens professionnels.</div>
+      </div>
+
+      <div class="grid-2" style="margin-top:24px;">
+        <div class="card">
+          <h3>Mon CV</h3>
+          <p>Version téléchargeable au format PDF.</p>
+          <a href="cv_eben_mukokeshi.pdf" download>↓ Télécharger mon CV (PDF)</a>
+          <span class="badge-todo">fichier à déposer</span>
         </div>
+        <div class="card">
+          <h3>Centres d'intérêt</h3>
+          <ul>
+            <li>Technologie</li>
+            <li>Musique</li>
+            <li>Sport</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Parcours & Compétences -->
-    <section id="parcours" class="py-5" style="background-color: #090d16;">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6">
-                    <h2 class="section-title">Cursus Académique & Expérience</h2>
-                    <div class="prof-card">
-                        <div class="history-item">
-                            <h4 class="h6 text-white mb-1">Stage Technicien Proximité</h4>
-                            <span class="text-primary small d-block mb-2">BNP Paribas, Paris | Mai — Juin 2026</span>
-                            <p class="text-secondary small">Configuration des terminaux utilisateurs, intégration matérielle des nouveaux collaborateurs. Administration des incidents et requêtes via l'outil ServiceNow. Attribution et gestion des droits d'accès physiques (badges).</p>
-                        </div>
-                        <div class="history-item">
-                            <h4 class="h6 text-white mb-1">BTS Services Informatiques aux Organisations</h4>
-                            <span class="text-primary small d-block mb-2">Lycée Parc des Loges, Évry | 2025 — 2027</span>
-                            <p class="text-secondary small">Étude approfondie de l'administration réseau, de la cybersécurité des systèmes d'information, des infrastructures cloud et de la gouvernance informatique.</p>
-                        </div>
-                        <div class="history-item">
-                            <h4 class="h6 text-white mb-1">Baccalauréat Technologique</h4>
-                            <span class="text-primary small d-block mb-2">Lycée Rosa Parks, Montgeron | 2024 — 2025</span>
-                            <p class="text-secondary small">Initiation à l'algorithmique, à la structuration logique des données, au développement web (HTML/CSS) et aux requêtes structurées SQL relationnelles.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h2 class="section-title">Compétences Validées</h2>
-                    <div class="prof-card h-100">
-                        <h5 class="text-white h6 mb-3">Systèmes & Infrastructures Réseaux</h5>
-                        <div class="mb-4">
-                            <span class="tech-tag">Windows Server</span>
-                            <span class="tech-tag">Linux / Debian</span>
-                            <span class="tech-tag">Cisco Packet Tracer</span>
-                            <span class="tech-tag">Adressage IP & Subnetting</span>
-                            <span class="tech-tag">Services DHCP / DNS / Active Directory</span>
-                        </div>
-                        
-                        <h5 class="text-white h6 mb-3">Développement d'Applications & Bases de Données</h5>
-                        <div class="mb-4">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL / Bases Relationnelles</span>
-                            <span class="tech-tag">HTML5 / CSS3</span>
-                            <span class="tech-tag">Architecture MVC / PDO</span>
-                        </div>
+    <!-- MON PARCOURS -->
+    <section id="parcours">
+      <div class="eyebrow">Mon parcours</div>
+      <h2>Formation &amp; compétences</h2>
+      <p class="section-sub">Mon parcours scolaire et mes compétences techniques</p>
 
-                        <h5 class="text-white h6 mb-3">Outils & Gestion Organisationnelle</h5>
-                        <div>
-                            <span class="tech-tag">ServiceNow</span>
-                            <span class="tech-tag">Git / GitHub</span>
-                            <span class="tech-tag">Modélisation UML / Merise</span>
-                            <span class="tech-tag">Gestion des privilèges IAM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="skill-block">
+        <h4>Langages</h4>
+        <div class="pill-row">
+          <span class="pill">HTML / CSS</span><span class="pill">SQL</span><span class="pill">PHP</span>
         </div>
+        <h4>Bases de données</h4>
+        <div class="pill-row">
+          <span class="pill">Modélisation relationnelle</span><span class="pill">Requêtes SQL simples &amp; avancées</span>
+        </div>
+        <h4>Outils &amp; systèmes</h4>
+        <div class="pill-row">
+          <span class="pill">Active Directory</span><span class="pill">Service-Now</span>
+          <span class="pill">Open Trust CMS</span><span class="pill">Microsoft Teams</span>
+        </div>
+      </div>
+
+      <h3 style="margin:36px 0 16px; font-size:18px;">Formations</h3>
+      <div class="timeline">
+        <div class="card">
+          <h3>BTS Services Informatiques aux Organisations — option SISR</h3>
+          <span class="meta">Lycée Parc des Loges, Évry · 2025 – 2027</span>
+        </div>
+        <div class="card">
+          <h3>Baccalauréat technologique</h3>
+          <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
+        </div>
+        <div class="card">
+          <h3>Diplôme en langue française</h3>
+          <span class="meta">Lycée Louis Pergaud, Besançon · 2023 – 2024</span>
+        </div>
+      </div>
+
+      <h3 style="margin:36px 0 16px; font-size:18px;">Expériences</h3>
+      <div class="timeline">
+        <div class="card">
+          <h3>Technicien Proxi — Stage</h3>
+          <span class="meta">BNP Paribas, Paris · 18 mai – 27 juin 2026</span>
+          <ul>
+            <li>Configuration de postes : accueil des nouveaux arrivants, mise en place des ordinateurs portables</li>
+            <li>Gestion des tickets via Service-Now (incidents et demandes des collaborateurs)</li>
+            <li>Enrôlement et activation de badges collaborateurs</li>
+            <li>Préparation de salles de réunion</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Terminale — Projets web &amp; bases de données</h3>
+          <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
+          <ul>
+            <li>Création de sites en HTML</li>
+            <li>Modélisation et gestion de bases de données relationnelles, requêtes SQL</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Réalisations (Jardikit a été retiré, structure logique conservée) -->
-    <section id="realisations" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Réalisations Professionnelles</h2>
-            <div class="row g-4">
-                <!-- Projet NOMADE -->
-                <div class="col-md-6">
-                    <div class="prof-card h-100">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <h3 class="h5 text-white m-0">Projet Applicatif : NOMADE</h3>
-                            <span class="badge bg-dark border border-secondary text-secondary">Projet Académique</span>
-                        </div>
-                        <p class="text-secondary small mb-3">
-                            <strong>Description :</strong> Conception et implémentation d'une application web dynamique de catalogue de voyages de bout en bout.
-                        </p>
-                        <ul class="text-secondary small ps-3 mb-4">
-                            <li><strong>Besoins métiers :</strong> Authentification sécurisée des utilisateurs, gestion d'un catalogue dynamique, et persistance d'un panier d'achat virtuel par sessions applicatives.</li>
-                            <li><strong>Technologies :</strong> Langage PHP natif, base de données relationnelle MySQL, stylisation CSS adaptative.</li>
-                            <li><strong>Bilan d'acquisition :</strong> Structuration rigoureuse du code serveur et isolation logique des données utilisateurs en session.</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Projet Stage BNP -->
-                <div class="col-md-6">
-                    <div class="prof-card h-100">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <h3 class="h5 text-white m-0">Mission IT : BNP Paribas</h3>
-                            <span class="badge bg-primary text-dark fw-semibold">Milieu Professionnel</span>
-                        </div>
-                        <p class="text-secondary small mb-3">
-                            <strong>Description :</strong> Support opérationnel et sécurisation de proximité au sein d'un parc de machines en secteur bancaire.
-                        </p>
-                        <ul class="text-secondary small ps-3 mb-4">
-                            <li><strong>Missions :</strong> Traitement des anomalies matérielles et logicielles des collaborateurs via ServiceNow. Respect strict des procédures de sécurité pour l'enrôlement et l'attribution des habilitations physiques.</li>
-                            <li><strong>Outils :</strong> ServiceNow, consoles d'administration centralisées, protocoles Active Directory.</li>
-                            <li><strong>Bilan d'acquisition :</strong> Immersion réussie dans un écosystème informatique à haute exigence réglementaire et sécuritaire.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- PROJET DE FORMATION -->
+    <section id="projet-formation">
+      <div class="eyebrow">Mon projet de formation</div>
+      <h2>Mon projet professionnel</h2>
+      <div class="card">
+        <p>
+          À l'issue de mon BTS SIO option SISR, je souhaite poursuivre vers un métier d'administrateur systèmes et réseaux,
+          en m'appuyant sur les compétences acquises en stage (Active Directory, support informatique) et en formation
+          (réseaux, bases de données, développement web).
+        </p>
+        <div class="note">À compléter : précise ici le métier visé ou la poursuite d'études envisagée après le BTS. <span class="badge-todo">à compléter</span></div>
+      </div>
     </section>
 
-    <!-- Veilles règlementaires et technologiques (Intégration complète de tes sources) -->
-    <section id="veilles" class="py-5" style="background-color: #090d16;">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Veille Technologique Cybersécurité basée EXACTEMENT sur tes pages articles -->
-                <div class="col-lg-6">
-                    <h2 class="section-title">Veille Technologique</h2>
-                    <div class="prof-card h-100">
-                        <h3 class="h6 text-white mb-3"><i class="fa-solid fa-shield-halved text-primary me-2"></i>Axe : Évolution des Cybermenaces (2022 — 2026)</h3>
-                        
-                        <div class="veille-block">
-                            <h4 class="h6 text-white mb-1">Ransomware d'Impact Étatique (2022)</h4>
-                            <p class="text-secondary small mb-0">Analyse de l'attaque Conti contre le Costa Rica. Mutation des rançongiciels en armes de déstabilisation géopolitique capables de paralyser l'économie d'un État entier[cite: 4].</p>
-                        </div>
+    <!-- REALISATIONS -->
+    <section id="realisations">
+      <div class="eyebrow">Mes réalisations</div>
+      <h2>Stages &amp; projets</h2>
+      <p class="section-sub">Travaux réalisés en stage et en projet personnel</p>
 
-                        <div class="veille-block">
-                            <h4 class="h6 text-white mb-1">Extorsion de Masse sans Chiffrement (2023)</h4>
-                            <p class="text-secondary small mb-0">Étude de la faille MOVEit (CVE-2023-34362). Remplacement du chiffrement traditionnel par l'exfiltration automatisée de données de masse sur des serveurs exposés[cite: 5].</p>
-                        </div>
+      <div class="card">
+        <h3>Stage BNP Paribas — Support IT / Technicien Proxi</h3>
+        <span class="meta">Stage · Paris · 18 mai – 27 juin 2026 · Seul, encadré par l'équipe support</span>
+        <p><strong>Contexte :</strong> stage en entreprise au sein du desk support IT.</p>
+        <p><strong>Besoins :</strong> assurer le support de premier niveau et la gestion du parc informatique des collaborateurs.</p>
+        <p><strong>Langages / outils :</strong> Active Directory, Service-Now, Open Trust CMS, Microsoft Teams.</p>
+        <p><strong>Travail réalisé :</strong> configuration de postes pour les nouveaux arrivants, traitement d'incidents et de demandes via Service-Now, enrôlement de badges, préparation de salles de réunion.</p>
+        <div class="note">Bilan personnel à rédiger ici (ce que ce stage t'a appris). <span class="badge-todo">à compléter</span></div>
+      </div>
 
-                        <div class="veille-block">
-                            <h4 class="h6 text-white mb-1">Vulnérabilité des Identités sans MFA (2024)</h4>
-                            <p class="text-secondary small mb-0">Cas Change Healthcare (ALPHV). Démonstration qu'un point d'accès tiers sans authentification multifacteur peut effondrer une chaîne critique sectorielle[cite: 6].</p>
-                        </div>
-
-                        <div class="veille-block">
-                            <h4 class="h6 text-white mb-1">Menaces IA & Vol de Jetons d'Agents (2025 — 2026)</h4>
-                            <p class="text-secondary small mb-0">Analyse du basculement vers l'IA offensive et l'interception des jetons OAuth/API au sein des agents IA, imposant l'architecture <strong>Zero Trust</strong>[cite: 7, 8].</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Veille Juridique avec intégration de la structure CEJM demandée -->
-                <div class="col-lg-6">
-                    <h2 class="section-title">Veille Juridique & Réglementaire</h2>
-                    <div class="prof-card h-100">
-                        <h3 class="h6 text-white mb-3"><i class="fa-solid fa-gavel text-primary me-2"></i>Cadre Légal & Enseignements CEJM</h3>
-                        <p class="text-secondary small mb-4">
-                            Suivi des évolutions du droit numérique, de la protection des données personnelles et de la gouvernance des systèmes d'information en corrélation directe avec les modules de CEJM.
-                        </p>
-                        
-                        <div class="veille-block" style="border-left-color: #64748b;">
-                            <h4 class="h6 text-white mb-1">Axe 1 : Protection des Données Personnelles (RGPD)</h4>
-                            <p class="text-secondary small mb-0">Étude des obligations de conformité pour les organisations : tenue du registre des traitements, rôle du DPO, et gestion légale de la rétention des journaux d'accès (logs).</p>
-                        </div>
-
-                        <div class="veille-block" style="border-left-color: #64748b;">
-                            <h4 class="h6 text-white mb-1">Axe 2 : Propriété Intellectuelle & Contrats</h4>
-                            <p class="text-secondary small mb-0">Analyse de la protection juridique des logiciels, licences open-source versus propriétaires, et clauses de responsabilité contractuelle dans la prestation de services informatiques.</p>
-                        </div>
-
-                        <div class="veille-block" style="border-left-color: #64748b;">
-                            <h4 class="h6 text-white mb-1">Axe 3 : Cybercriminalité et Responsabilité Pénale</h4>
-                            <p class="text-secondary small mb-0">Étude du cadre légal (Loi Godfrain / Code Pénal) réprimant les accès frauduleux, les maintiens non autorisés et les altérations de données dans un système STAD.</p>
-                        </div>
-                        
-                        <p class="text-muted small mt-3 italic"><i class="fa-solid fa-folder-open me-2"></i><em>Note : Les documents de synthèse détaillés de mes cours de CEJM seront annexés dès réception des validations académiques.</em></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="card">
+        <h3>NOMADE — Site web dynamique de voyage</h3>
+        <span class="meta">Projet personnel · Seul</span>
+        <p><strong>Contexte :</strong> conception d'un site de voyage proposant différents catalogues.</p>
+        <p><strong>Langages / outils :</strong> HTML, CSS, SQL, PHP.</p>
+        <p><strong>Travail réalisé :</strong> développement du site dynamique (pages PHP connectées à une base de données SQL) présentant les catalogues de voyages.</p>
+        <div class="note">À compléter : contexte précis (projet de cours, libre ?), période, besoins détaillés, captures d'écran, et ton bilan personnel. <span class="badge-todo">à compléter</span></div>
+      </div>
     </section>
 
-    <!-- Zone de contact épurée et professionnelle -->
-    <section id="contact" class="py-5 text-center">
-        <div class="container">
-            <h2 class="section-title text-center">Formuler un Contact</h2>
-            <p class="text-secondary mx-auto mb-4" style="max-width: 500px;">
-                Je reste à votre entière disposition pour échanger sur mes compétences, mon projet professionnel ou pour toute opportunité de collaboration technique.
-            </p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" class="btn-primary-custom">
-                    <i class="fa-brands fa-linkedin me-2"></i>Réseau LinkedIn
-                </a>
-                <a href="mailto:ebenmukokeshi@gmail.com" class="btn-secondary-custom">
-                    <i class="fa-solid fa-envelope me-2"></i>ebenmukokeshi@gmail.com
-                </a>
-            </div>
-        </div>
+    <!-- VEILLE TECHNOLOGIQUE -->
+    <section id="veille-techno">
+      <div class="eyebrow">Veille technologique</div>
+      <h2>Dossier de veille technologique</h2>
+      <p class="section-sub">Suivi régulier de sujets liés à mon domaine (SISR) — à mettre à jour tout au long de l'année</p>
+
+      <div class="card">
+        <h3>Sujet de veille n°1 — Sécurité de l'Active Directory</h3>
+        <span class="meta">Sujet proposé, à valider</span>
+        <p>Suivi des vulnérabilités et bonnes pratiques de durcissement liées à Active Directory.</p>
+        <div class="note">Article : titre — date — source — lien — résumé personnel. <span class="badge-todo">à compléter</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Sujet de veille n°2 — Cybersécurité réseau</h3>
+        <span class="meta">Sujet proposé, à valider</span>
+        <p>Suivi des menaces réseau courantes et des outils de détection/protection.</p>
+        <div class="note">Article : titre — date — source — lien — résumé personnel. <span class="badge-todo">à compléter</span></div>
+      </div>
+
+      <div class="note" style="margin-top:4px;">Ces sujets sont des propositions de départ — adapte-les à ce qui t'intéresse vraiment. Pour chaque article : titre, date, source, lien, et un résumé écrit par toi.</div>
     </section>
 
-    <footer class="text-center">
-        <div class="container">
-            <p class="m-0 text-muted small">© 2026 Eben Mukokeshi — Conforme aux exigences du référentiel du BTS SIO (Développement autonome sans CMS).</p>
-        </div>
+    <!-- VEILLE JURIDIQUE -->
+    <section id="veille-juridique">
+      <div class="eyebrow">Veille juridique</div>
+      <h2>Dossier de veille juridique</h2>
+      <p class="section-sub">À construire avec ton professeur d'EDM</p>
+      <div class="card">
+        <h3>Sujet proposé — Protection des données personnelles (RGPD)</h3>
+        <span class="meta">À valider avec le professeur d'EDM</span>
+        <p>Suivi de l'actualité juridique autour du RGPD dans le secteur informatique.</p>
+        <div class="note">Article : titre — date — source — lien — résumé personnel. <span class="badge-todo">à compléter</span></div>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies" style="border-bottom:none;">
+      <div class="eyebrow">Hobbies &amp; passions</div>
+      <h2>En dehors des cours</h2>
+      <div class="grid-2">
+        <div class="card"><h3>Technologie</h3><p>Veille personnelle, développement web.</p></div>
+        <div class="card"><h3>Musique</h3><p>Centre d'intérêt personnel.</p></div>
+        <div class="card"><h3>Sport</h3><p>Centre d'intérêt personnel.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Eben Mukokeshi — Portfolio BTS SIO SISR</span>
+      <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" rel="noopener">LinkedIn ↗</a>
     </footer>
 
-    <!-- Bootstrap Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 120 && rect.bottom >= 120) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
 </body>
 </html>
