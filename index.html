@@ -10,15 +10,14 @@
   :root{
     --navy: #0a2540;
     --navy-2: #123a5e;
-    --navy-light: #2c6ca8;
-    --glass-card: rgba(255, 255, 255, 0.65);
+    --navy-light: #64b5f6;
+    --glass-card: rgba(255, 255, 255, 0.95);
     --glass-border: rgba(255, 255, 255, 0.8);
     --glass-sidebar: rgba(10, 37, 64, 0.95);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
-    --line: rgba(223, 230, 237, 0.6);
-    --text: #1c2b39;
-    --text-dim: #4a5a6a;
-    --white: #ffffff;
+    --line: rgba(255, 255, 255, 0.2);
+    --text-white: #ffffff;
+    --text-light: #f0f6fc;
+    --text-dark: #1c2b39;
     --display: 'Manrope', sans-serif;
     --sans: 'Inter', sans-serif;
   }
@@ -29,9 +28,9 @@
   body{
     background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important;
     background-attachment: fixed !important;
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.65;
+    color: var(--text-white);
+    font-family: var(--sans);
+    line-height: 1.65;
     position: relative;
     min-height: 100vh;
   }
@@ -47,7 +46,7 @@
     pointer-events: none;
   }
 
-  a{color:var(--navy-light); text-decoration:none;}
+  a{color: var(--navy-light); text-decoration:none;}
   a:hover{text-decoration:underline;}
   ::selection{background:var(--navy); color:#fff;}
 
@@ -61,7 +60,7 @@
     right: 15px;
     z-index: 1100;
     background: rgba(10, 37, 64, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
     padding: 10px 14px;
     border-radius: 8px;
@@ -94,19 +93,19 @@
   }
 
   .sidebar .brand{
-    font-family:var(--display); font-weight:800; font-size:17px; color:#fff;
+    font-family:var(--display); font-weight:800; font-size:17px; color:#ffffff;
     padding:0 26px 26px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:18px;
   }
   .sidebar .brand small{display:block; font-weight:500; font-size:11.5px; color:#64b5f6; margin-top:4px; letter-spacing:.04em;}
   .sidebar ul{list-style:none;}
   .sidebar li a{
     display:block; font-size:14px; font-weight:500;
-    color:#d0dce8; padding:11px 26px; border-left:3px solid transparent;
+    color:#ffffff; padding:11px 26px; border-left:3px solid transparent;
     transition:all .2s ease;
   }
   .sidebar li a:hover, .sidebar li a.active{
-    color:#fff; 
-    background: rgba(255, 255, 255, 0.12);
+    color:#ffffff; 
+    background: rgba(255, 255, 255, 0.15);
     border-left-color: #64b5f6;
     text-decoration:none;
   }
@@ -114,7 +113,7 @@
     margin:26px 26px 0; padding-top:18px; border-top:1px solid rgba(255,255,255,0.12);
   }
   .sidebar .linkedin a{color:#64b5f6; font-size:13px; font-weight:600;}
-  .sidebar .linkedin a:hover{color:#fff;}
+  .sidebar .linkedin a:hover{color:#ffffff;}
 
   /* Main avec décalage PC */
   main{
@@ -131,12 +130,13 @@
   }
 
   .eyebrow{
-    font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+    font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
     color:#64b5f6; margin-bottom:14px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
-  h1,h2,h3{font-family:var(--display); font-weight:800; color:#ffffff; letter-spacing:-0.01em;}
-  h2{font-size:32px; margin-bottom:8px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);}
-  .section-sub{color:#e0e0e0; margin-bottom:38px; font-size:15px;}
+  h1,h2,h3{font-family:var(--display); font-weight:800; color:#ffffff !important; letter-spacing:-0.01em;}
+  h2{font-size:32px; margin-bottom:8px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
+  .section-sub{color:#f0f6fc !important; margin-bottom:38px; font-size:15.5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4);}
 
   /* HERO */
   #accueil{
@@ -150,8 +150,21 @@
   .hero-photo{
     width:260px; height:260px; border-radius:50%; object-fit:cover; flex-shrink:0;
     border: 4px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
   }
+
+  .hero-kicker{
+    font-size:14px; font-weight:700; color:#9be7ff !important; margin-bottom:14px; letter-spacing:.03em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  }
+  .hero-title{
+    font-size:52px; color:#ffffff !important; line-height:1.12; text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+  .hero-role{
+    font-size:17px; color:#ffffff !important; margin-top:16px; max-width:560px; font-weight:400;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  }
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
 
   /* Buttons */
   .btn{
@@ -161,9 +174,10 @@
   }
   .btn-primary{
     background: #64b5f6; 
-    color:#0a2540;
+    color:#0a2540 !important;
     border: 1px solid #64b5f6;
-    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+    font-weight:700;
   }
   .btn-primary:hover{
     background:#9be7ff; 
@@ -172,11 +186,12 @@
     transform: translateY(-2px);
   }
   .btn-ghost{
-    color:#ffffff; 
+    color:#ffffff !important; 
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight:600;
   }
   .btn-ghost:hover{
     background: rgba(255, 255, 255, 0.3); 
@@ -186,42 +201,42 @@
 
   /* Cards */
   .card{
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     padding:28px 30px; margin-bottom:20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   }
-  .card h3{font-size:18px; margin-bottom:6px; color:var(--navy);}
-  .card .meta{font-size:12.5px; font-weight:600; color:var(--navy-light); margin-bottom:14px; display:block;}
-  .card p{color:var(--text-dim); font-size:14.5px; margin-bottom:8px;}
-  .card p strong{color:var(--text); font-weight:600;}
-  .card ul{margin:10px 0 0 18px; color:var(--text-dim); font-size:14.5px;}
+  .card h3{font-size:18px; margin-bottom:6px; color:var(--text-dark) !important;}
+  .card .meta{font-size:12.5px; font-weight:600; color:var(--navy-2); margin-bottom:14px; display:block;}
+  .card p{color:#334155; font-size:14.5px; margin-bottom:8px;}
+  .card p strong{color:#0f172a; font-weight:700;}
+  .card ul{margin:10px 0 0 18px; color:#334155; font-size:14.5px;}
   .card ul li{margin-bottom:5px;}
 
   .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
 
-  .skill-block h4{font-family:var(--display); color:#ffffff; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px;}
+  .skill-block h4{font-family:var(--display); color:#ffffff !important; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px; text-shadow:0 1px 3px rgba(0,0,0,0.4);}
   .skill-block h4:first-child{margin-top:0;}
   .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
   .pill{
     font-size:13px; font-weight:600; 
-    background: rgba(255, 255, 255, 0.25); 
-    color:#ffffff; 
+    background: rgba(255, 255, 255, 0.2); 
+    color:#ffffff !important; 
     border:1px solid rgba(255, 255, 255, 0.4); 
     padding:7px 14px; border-radius:20px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
 
-  .timeline{border-left:2px solid rgba(100, 181, 246, 0.5); padding-left:26px; margin-left:6px;}
+  .timeline{border-left:2px solid rgba(100, 181, 246, 0.6); padding-left:26px; margin-left:6px;}
   .timeline .card{position:relative;}
   .timeline .card::before{
     content:""; position:absolute; left:-33px; top:30px; width:10px; height:10px;
@@ -229,23 +244,23 @@
   }
 
   .note{
-    border-left:4px solid var(--navy-light); 
-    background: rgba(255, 255, 255, 0.8);
-    padding:14px 18px; border-radius:0 10px 10px 0; font-size:13.5px; color:var(--text-dim);
+    border-left:4px solid var(--navy-2); 
+    background: rgba(241, 245, 249, 0.9);
+    padding:14px 18px; border-radius:0 10px 10px 0; font-size:13.5px; color:#334155;
     margin-top:18px;
   }
-  .note strong{color:var(--navy);}
+  .note strong{color:#0f172a;}
 
   .badge-todo{
-    display:inline-block; font-size:11px; font-weight:600; color:var(--navy-light);
+    display:inline-block; font-size:11px; font-weight:600; color:var(--navy-2);
     border:1px solid var(--line); background:rgba(255, 255, 255, 0.9);
     padding:3px 9px; border-radius:4px; margin-left:6px; vertical-align:middle;
   }
 
   footer{
-    padding:34px 64px; font-size:13px; color:#b0c4de;
+    padding:34px 64px; font-size:13px; color:#ffffff;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    border-top:1px solid rgba(255, 255, 255, 0.1);
+    border-top:1px solid rgba(255, 255, 255, 0.15);
     max-width:960px;
   }
   footer a{color:#64b5f6; font-weight:600;}
@@ -253,20 +268,20 @@
   /* --- ADAPTATION MOBILE (Écrans < 900px) --- */
   @media (max-width: 900px) {
     .mobile-burger {
-      display: block; /* Affiche le bouton hamburger uniquement sur téléphone */
+      display: block;
     }
 
     nav.sidebar {
-      transform: translateX(-100%); /* Masque le menu à gauche sur mobile */
+      transform: translateX(-100%);
       width: 260px;
     }
 
     nav.sidebar.open {
-      transform: translateX(0); /* Affiche le menu quand on clique sur le burger */
+      transform: translateX(0);
     }
 
     main {
-      margin-left: 0; /* Plus de décalage à gauche sur mobile */
+      margin-left: 0;
       width: 100%;
     }
 
@@ -637,7 +652,7 @@
 
   animate();
 
-  // Gestion du menu Burger et de la fermeture automatique
+  // Gestion du menu Burger et fermeture automatique
   const burgerBtn = document.getElementById('burgerBtn');
   const sidebar = document.getElementById('sidebar');
 
@@ -646,7 +661,6 @@
     burgerBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
   });
 
-  // Fermer le menu sur mobile lorsqu'on clique sur un lien
   const navLinks = document.querySelectorAll('.sidebar a');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
