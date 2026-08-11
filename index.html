@@ -106,12 +106,30 @@
     -webkit-backdrop-filter: blur(20px);
     border-right: 1px solid rgba(255, 255, 255, 0.18);
     padding:80px 0 36px 0;
-    position:sticky; top:0; height:100vh;
+    position:fixed; top:0; left:0; height:100vh;
     overflow-y:auto;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
+    
+    /* Masquer le menu sur tous les écrans par défaut */
+    transform: translateX(-100%);
+    
+    /* Masquer la barre de défilement (scrollbar) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
   }
+
+  /* Masquer la barre de défilement sur Chrome/Safari/Opera */
+  nav.sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Afficher la sidebar quand la classe 'open' est active */
+  nav.sidebar.open {
+    transform: translateX(0);
+  }
+
   .sidebar .brand{
     font-family:var(--display); font-weight:800; font-size:17px; color:#fff;
     padding:0 26px 26px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:18px;
@@ -141,19 +159,10 @@
     padding:84px 64px;
     border-bottom:1px solid rgba(255, 255, 255, 0.15);
     max-width:960px;
+    margin: 0 auto;
   }
 
   @media (max-width:900px){
-    nav.sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      transform: translateX(-100%);
-    }
-    nav.sidebar.open {
-      transform: translateX(0);
-    }
     section{padding:84px 24px 48px 24px;}
   }
 
@@ -283,6 +292,8 @@
     padding:34px 64px; font-size:13px; color:#b0c4de;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     border-top:1px solid rgba(255, 255, 255, 0.1);
+    max-width:960px;
+    margin:0 auto;
   }
   footer a{color:#64b5f6; font-weight:600;}
 </style>
