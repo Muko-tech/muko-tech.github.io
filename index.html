@@ -12,13 +12,9 @@
     --navy: #0a2540;
     --navy-2: #123a5e;
     --navy-light: #64b5f6;
-    --glass-card: rgba(255, 255, 255, 0.95);
-    --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-sidebar: rgba(10, 37, 64, 0.95);
     --line: rgba(255, 255, 255, 0.2);
     --text-white: #ffffff;
     --text-light: #f0f6fc;
-    --text-dark: #1c2b39;
     --display: 'Manrope', sans-serif;
     --sans: 'Inter', sans-serif;
   }
@@ -86,14 +82,14 @@
   /* Sidebar */
   nav.sidebar{
     width:240px; flex-shrink:0;
-    background: var(--glass-sidebar);
+    background: rgba(10, 37, 64, 0.65);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
     padding:40px 0 36px 0;
     position:fixed; top:0; left:0; height:100vh;
     overflow-y:auto;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     z-index: 1000;
     transition: transform 0.3s ease;
     
@@ -138,18 +134,17 @@
   
   section{
     padding:84px 64px;
-    border-bottom:1px solid rgba(255, 255, 255, 0.15);
+    border-bottom:1px solid rgba(255, 255, 255, 0.12);
     max-width:960px;
   }
 
   .eyebrow{
     font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
     color:#64b5f6; margin-bottom:14px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
   h1,h2,h3{font-family:var(--display); font-weight:800; color:#ffffff !important; letter-spacing:-0.01em;}
-  h2{font-size:32px; margin-bottom:8px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
-  .section-sub{color:#f0f6fc !important; margin-bottom:38px; font-size:15.5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4);}
+  h2{font-size:32px; margin-bottom:8px;}
+  .section-sub{color:#cbd5e1 !important; margin-bottom:38px; font-size:15.5px;}
 
   /* HERO */
   #accueil{
@@ -162,20 +157,18 @@
   .hero-text{flex:1; min-width:0;}
   .hero-photo{
     width:260px; height:260px; border-radius:50%; object-fit:cover; flex-shrink:0;
-    border: 4px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
   }
 
   .hero-kicker{
     font-size:14px; font-weight:700; color:#9be7ff !important; margin-bottom:14px; letter-spacing:.03em;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
   }
   .hero-title{
-    font-size:52px; color:#ffffff !important; line-height:1.12; text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    font-size:52px; color:#ffffff !important; line-height:1.12;
   }
   .hero-role{
-    font-size:17px; color:#ffffff !important; margin-top:16px; max-width:560px; font-weight:400;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    font-size:17px; color:#e2e8f0 !important; margin-top:16px; max-width:560px; font-weight:400;
   }
   .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
 
@@ -189,7 +182,7 @@
     background: #64b5f6; 
     color:#0a2540 !important;
     border: 1px solid #64b5f6;
-    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
     font-weight:700;
   }
   .btn-primary:hover{
@@ -200,38 +193,42 @@
   }
   .btn-ghost{
     color:#ffffff !important; 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-weight:600;
   }
   .btn-ghost:hover{
-    background: rgba(255, 255, 255, 0.3); 
+    background: rgba(255, 255, 255, 0.18); 
     text-decoration:none;
     transform: translateY(-2px);
   }
 
-  /* Cards */
+  /* Cards - Dynamic Dark Liquid Glass */
   .card{
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
+    background: rgba(15, 32, 39, 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
     padding:28px 30px; margin-bottom:20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: rgba(100, 181, 246, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
-  .card h3{font-size:18px; margin-bottom:6px; color:var(--text-dark) !important;}
-  .card .meta{font-size:12.5px; font-weight:600; color:var(--navy-2); margin-bottom:14px; display:block;}
-  .card p{color:#334155; font-size:14.5px; margin-bottom:8px;}
-  .card p strong{color:#0f172a; font-weight:700;}
-  .card ul{margin:10px 0 0 18px; color:#334155; font-size:14.5px;}
+  .card h3{font-size:18px; margin-bottom:6px; color:#ffffff !important;}
+  .card .meta{font-size:12.5px; font-weight:600; color:#94a3b8; margin-bottom:14px; display:block;}
+  .card p{color:#cbd5e1; font-size:14.5px; margin-bottom:8px;}
+  .card p strong{color:#ffffff; font-weight:700;}
+  .card ul{margin:10px 0 0 18px; color:#cbd5e1; font-size:14.5px;}
   .card ul li{margin-bottom:5px;}
 
   /* Image de projet */
@@ -239,51 +236,55 @@
     width: 100%;
     max-height: 260px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
 
-  .skill-block h4{font-family:var(--display); color:#ffffff !important; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px; text-shadow:0 1px 3px rgba(0,0,0,0.4);}
+  .skill-block h4{font-family:var(--display); color:#ffffff !important; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px;}
   .skill-block h4:first-child{margin-top:0;}
   .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
   .pill{
     font-size:13px; font-weight:600; 
-    background: rgba(255, 255, 255, 0.2); 
-    color:#ffffff !important; 
-    border:1px solid rgba(255, 255, 255, 0.4); 
+    background: rgba(255, 255, 255, 0.08); 
+    color:#e2e8f0 !important; 
+    border:1px solid rgba(255, 255, 255, 0.2); 
     padding:7px 14px; border-radius:20px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
 
-  .timeline{border-left:2px solid rgba(100, 181, 246, 0.6); padding-left:26px; margin-left:6px;}
+  .timeline{border-left:2px solid rgba(100, 181, 246, 0.4); padding-left:26px; margin-left:6px;}
   .timeline .card{position:relative;}
   .timeline .card::before{
     content:""; position:absolute; left:-33px; top:30px; width:10px; height:10px;
-    border-radius:50%; background:#64b5f6; box-shadow:0 0 0 4px rgba(255, 255, 255, 0.8);
+    border-radius:50%; background:#64b5f6; box-shadow:0 0 0 4px rgba(15, 32, 39, 0.8);
   }
 
   .note{
-    border-left:4px solid var(--navy-2); 
-    background: rgba(241, 245, 249, 0.9);
-    padding:14px 18px; border-radius:0 10px 10px 0; font-size:13.5px; color:#334155;
+    border-left:4px solid #64b5f6; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding:14px 18px; border-radius:0 10px 10px 0; font-size:13.5px; color:#cbd5e1;
     margin-top:18px;
   }
-  .note strong{color:#0f172a;}
+  .note strong{color:#ffffff;}
 
   .badge-todo{
-    display:inline-block; font-size:11px; font-weight:600; color:var(--navy-2);
-    border:1px solid var(--line); background:rgba(255, 255, 255, 0.9);
+    display:inline-block; font-size:11px; font-weight:600; color:#94a3b8;
+    border:1px solid rgba(255, 255, 255, 0.2); background:rgba(255, 255, 255, 0.05);
     padding:3px 9px; border-radius:4px; margin-left:6px; vertical-align:middle;
   }
 
   footer{
-    padding:34px 64px; font-size:13px; color:#ffffff;
+    padding:34px 64px; font-size:13px; color:#94a3b8;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    border-top:1px solid rgba(255, 255, 255, 0.15);
+    border-top:1px solid rgba(255, 255, 255, 0.12);
     max-width:960px;
   }
   footer a{color:#64b5f6; font-weight:600;}
@@ -405,7 +406,8 @@
           Je m'intéresse à l'administration système, aux réseaux et au développement web.
           Je parle français (courant), lingala (courant) et anglais (intermédiaire).
         </p>
-       
+      </div>
+
       <div class="grid-2" style="margin-top:24px;">
         <div class="card">
           <h3>Mon CV</h3>
@@ -499,53 +501,53 @@
     </section>
 
     <!-- REALISATIONS -->
-<section id="realisations">
-  <div class="eyebrow">Mes réalisations</div>
-  <h2>Stages &amp; projets</h2>
-  <p class="section-sub">Travaux réalisés en stage et en projet personnel</p>
+    <section id="realisations">
+      <div class="eyebrow">Mes réalisations</div>
+      <h2>Stages &amp; projets</h2>
+      <p class="section-sub">Travaux réalisés en stage et en projet personnel</p>
 
-  <div class="card">
-    <h3>Stage BNP Paribas — Support IT / Technicien Proxi</h3>
-    <span class="meta">Stage · Paris · 18 mai – 27 juin 2026 · Seul, encadré par l'équipe support</span>
-    <p><strong>Contexte :</strong> stage en entreprise au sein du desk support IT.</p>
-    <p><strong>Besoins :</strong> assurer le support de premier niveau et la gestion du parc informatique des collaborateurs.</p>
-    <p><strong>Langages / outils :</strong> Active Directory, Service-Now, Open Trust CMS, Microsoft Teams.</p>
-    <p><strong>Travail réalisé :</strong> configuration de postes pour les nouveaux arrivants, traitement d'incidents et de demandes via Service-Now, enrôlement de badges, préparation de salles de réunion.</p>
-    <div class="note">Cette expérience au sein de BNP Paribas m'a permis de consolider mes compétences pratiques en support de proximité et gestion de parc informatique. J'y ai appris à gérer les priorités des demandes via Service-Now, à assurer l'intégration des utilisateurs avec Active Directory et OpenTrust CMS, et à appliquer rigoureusement les protocoles de sécurité réseau.</div>
-  </div>
+      <div class="card">
+        <h3>Stage BNP Paribas — Support IT / Technicien Proxi</h3>
+        <span class="meta">Stage · Paris · 18 mai – 27 juin 2026 · Seul, encadré par l'équipe support</span>
+        <p><strong>Contexte :</strong> stage en entreprise au sein du desk support IT.</p>
+        <p><strong>Besoins :</strong> assurer le support de premier niveau et la gestion du parc informatique des collaborateurs.</p>
+        <p><strong>Langages / outils :</strong> Active Directory, Service-Now, Open Trust CMS, Microsoft Teams.</p>
+        <p><strong>Travail réalisé :</strong> configuration de postes pour les nouveaux arrivants, traitement d'incidents et de demandes via Service-Now, enrôlement de badges, préparation de salles de réunion.</p>
+        <div class="note">Cette expérience au sein de BNP Paribas m'a permis de consolider mes compétences pratiques en support de proximité et gestion de parc informatique. J'y ai appris à gérer les priorités des demandes via Service-Now, à assurer l'intégration des utilisateurs avec Active Directory et OpenTrust CMS, et à appliquer rigoureusement les protocoles de sécurité réseau.</div>
+      </div>
 
-  <!-- PROJET LOSSA -->
-  <div class="card">
-    <img src="lossa_preview.png" alt="Aperçu du site LOSSA" class="project-img">
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
-      <h3 style="margin-bottom: 0;">LOSSA — Plateforme e-commerce sécurisée</h3>
-      <span class="pill" style="background: rgba(234, 179, 8, 0.2); color: #fde047 !important; border-color: rgba(234, 179, 8, 0.5); font-size: 11px; padding: 4px 10px;">En cours</span>
-    </div>
-    <span class="meta">Projet personnel · Développement full-stack web</span>
-    <p><strong>Contexte :</strong> création d'une boutique en ligne interactive avec authentification et paiement.</p>
-    <p><strong>Technologies :</strong> HTML, CSS, JavaScript, Supabase (Auth & BDD), API Flutterwave.</p>
-    <p><strong>Fonctionnalités :</strong></p>
-    <ul>
-      <li>Gestion des produits et comptes utilisateurs via Supabase.</li>
-      <li>Authentification sécurisée requise pour l'accès au panier et à la commande.</li>
-      <li>Tiroir panier dynamique avec calcul des frais de livraison selon la zone géographique.</li>
-      <li>Paiement sécurisé intégré via Flutterwave (cartes bancaires et Mobile Money).</li>
-    </ul>
-  </div>
+      <!-- PROJET LOSSA -->
+      <div class="card">
+        <img src="lossa_preview.png" alt="Aperçu du site LOSSA" class="project-img">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
+          <h3 style="margin-bottom: 0;">LOSSA — Plateforme e-commerce sécurisée</h3>
+          <span class="pill" style="background: rgba(234, 179, 8, 0.2); color: #fde047 !important; border-color: rgba(234, 179, 8, 0.5); font-size: 11px; padding: 4px 10px;">En cours</span>
+        </div>
+        <span class="meta">Projet personnel · Développement full-stack web</span>
+        <p><strong>Contexte :</strong> création d'une boutique en ligne interactive avec authentification et paiement.</p>
+        <p><strong>Technologies :</strong> HTML, CSS, JavaScript, Supabase (Auth & BDD), API Flutterwave.</p>
+        <p><strong>Fonctionnalités :</strong></p>
+        <ul>
+          <li>Gestion des produits et comptes utilisateurs via Supabase.</li>
+          <li>Authentification sécurisée requise pour l'accès au panier et à la commande.</li>
+          <li>Tiroir panier dynamique avec calcul des frais de livraison selon la zone géographique.</li>
+          <li>Paiement sécurisé intégré via Flutterwave (cartes bancaires et Mobile Money).</li>
+        </ul>
+      </div>
 
-  <!-- PROJET NOMADE -->
-  <div class="card">
-    <img src="nomade_preview.png" alt="Aperçu du site NOMADE" class="project-img">
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
-      <h3 style="margin-bottom: 0;">NOMADE — Site web dynamique de voyage</h3>
-      <span class="pill" style="background: rgba(34, 197, 94, 0.2); color: #86efac !important; border-color: rgba(34, 197, 94, 0.5); font-size: 11px; padding: 4px 10px;">Terminé</span>
-    </div>
-    <span class="meta">Projet personnel · Web dynamisme</span>
-    <p><strong>Contexte :</strong> conception d'un site de réservation de voyages et de circuits.</p>
-    <p><strong>Technologies :</strong> HTML, CSS, PHP, SQL.</p>
-    <p><strong>Fonctionnalités :</strong> catalogue dynamique interconnecté avec une base de données MySQL, recherche de destinations, gestion des sessions et ajout d'offres au panier.</p>
-  </div>
-</section>
+      <!-- PROJET NOMADE -->
+      <div class="card">
+        <img src="nomade_preview.png" alt="Aperçu du site NOMADE" class="project-img">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
+          <h3 style="margin-bottom: 0;">NOMADE — Site web dynamique de voyage</h3>
+          <span class="pill" style="background: rgba(34, 197, 94, 0.2); color: #86efac !important; border-color: rgba(34, 197, 94, 0.5); font-size: 11px; padding: 4px 10px;">Terminé</span>
+        </div>
+        <span class="meta">Projet personnel · Web dynamisme</span>
+        <p><strong>Contexte :</strong> conception d'un site de réservation de voyages et de circuits.</p>
+        <p><strong>Technologies :</strong> HTML, CSS, PHP, SQL.</p>
+        <p><strong>Fonctionnalités :</strong> catalogue dynamique interconnecté avec une base de données MySQL, recherche de destinations, gestion des sessions et ajout d'offres au panier.</p>
+      </div>
+    </section>
 
     <!-- VEILLE TECHNOLOGIQUE -->
     <section id="veille-techno">
@@ -593,12 +595,12 @@
     </section>
 
     <footer>
-  <span>© 2026 Eben Mukokeshi — Portfolio BTS SIO SISR</span>
-  <div>
-    <a href="politique-de-confidentialite.html" style="margin-right: 15px;">Politique de confidentialité</a>
-    <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" rel="noopener">LinkedIn ↗</a>
-  </div>
-</footer>
+      <span>© 2026 Eben Mukokeshi — Portfolio BTS SIO SISR</span>
+      <div>
+        <a href="politique-de-confidentialite.html" style="margin-right: 15px;">Politique de confidentialité</a>
+        <a href="https://www.linkedin.com/in/ebenmukokeshi" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </footer>
 
   </main>
 </div>
