@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr" style="background-color: #0f2027;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f2027">
+<title>Politique de Confidentialité — Eben Mukokeshi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0a2540;
+    --navy-2: #123a5e;
+    --navy-light: #64b5f6;
+    --text-white: #ffffff;
+    --text-sub: #cbd5e1;
+    --display: 'Manrope', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  
+  html, body {
+    background-color: #0f2027 !important;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body{
+    color: var(--text-white);
+    font-family: var(--sans);
+    line-height: 1.65;
+    position: relative;
+  }
+
+  #bgCanvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+  }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: rgba(100, 181, 246, 0.2);
+    color: #ffffff !important;
+    text-decoration: none;
+    border: 1px solid rgba(100, 181, 246, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+
+  .btn-back:hover {
+    background: rgba(100, 181, 246, 0.35);
+    border-color: #64b5f6;
+    transform: translateY(-2px);
+  }
+
+  /* Style Liquid Glass (Apple) */
+  .card-legal {
+    background: rgba(15, 32, 39, 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    color: var(--text-sub);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .card-legal h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 30px;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-legal .date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin-bottom: 24px;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 14px;
+  }
+
+  .card-legal h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--text-white);
+    margin: 28px 0 12px 0;
+  }
+
+  .card-legal p, .card-legal ul {
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .card-legal strong {
+    color: #ffffff;
+  }
+
+  .card-legal ul {
+    margin-left: 20px;
+  }
+
+  .card-legal li {
+    margin-bottom: 6px;
+  }
+
+  .card-legal a {
+    color: var(--navy-light);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .card-legal a:hover {
+    color: #ffffff;
+  }
+
+  @media (max-width: 600px) {
+    .card-legal {
+      padding: 24px;
+      border-radius: 16px;
+    }
+    .card-legal h1 {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="container">
+  <a href="index.html" class="btn-back">← Retour au portfolio</a>
+
+  <div class="card-legal">
+    <h1>Politique de confidentialité</h1>
+    <span class="date">Dernière mise à jour : août 2026</span>
+
+    <h2>1. Éditeur du site</h2>
+    <p>Le présent site est un portfolio personnel à caractère non commercial, édité par :</p>
+    <p><strong>Eben Mukokeshi Mukandila</strong><br>
+    Étudiant en BTS SIO au Lycée du Parc des loges<br>
+    Contact : via les profils LinkedIn accessibles depuis la page d'accueil.</p>
+
+    <h2>2. Objet et cadre juridique</h2>
+    <p>Cette politique a pour but de vous informer sur la manière dont sont gérées les données susceptibles d'être traitées lors de votre navigation sur ce portfolio, conformément au Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679) et à la loi Informatique et Libertés.</p>
+
+    <h2>3. Hébergement et journaux de connexion (Logs)</h2>
+    <p>Ce site est hébergé de manière statique via le service GitHub Pages, fourni par la société GitHub, Inc.</p>
+    <p><strong>Coordonnées de l'hébergeur :</strong><br>
+    GitHub, Inc.<br>
+    88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+    Site web : <a href="https://pages.github.com" target="_blank" rel="noopener">https://pages.github.com</a></p>
+    <p>Dans le cadre du fonctionnement technique de l'hébergement, GitHub Inc. peut collecter automatiquement des données techniques dans ses journaux serveur (server logs), telles que :</p>
+    <ul>
+      <li>Votre adresse IP ;</li>
+      <li>Le type et la version de votre navigateur web ;</li>
+      <li>Le système d'exploitation utilisé ;</li>
+      <li>La date, l'heure et la page consultée.</li>
+    </ul>
+    <p><strong>Base légale :</strong> Ces données sont traitées sur la base de l'intérêt légitime (article 6.1.f du RGPD) de l'hébergeur pour garantir la sécurité, la stabilité et la prévention des attaques informatiques sur ses serveurs.</p>
+
+    <h2>4. Données personnelles &amp; Formulaires</h2>
+    <p>Ce site ne comporte aucun formulaire de contact, aucun espace membre et ne collecte directement aucune donnée personnelle à votre insu. Aucun outil de mesure d'audience commercial (type Google Analytics) ni script de suivi publicitaire n'est intégré.</p>
+
+    <h2>5. Cookies et technologies de suivi</h2>
+    <p>Aucun cookie de suivi, analytique, publicitaire ou nécessitant le consentement préalable de l'utilisateur n'est déposé sur votre terminal lors de la consultation de ce site. Le site fonctionne intégralement sans aucun dépôt de cookie tiers.</p>
+
+    <h2>6. Transfert de données hors de l'UE</h2>
+    <p>En raison de l'hébergement du site sur les serveurs de GitHub Inc. situés aux États-Unis, certaines données techniques de connexion (adresses IP) peuvent faire l'objet d'un transfert vers les États-Unis. GitHub s'engage à respecter les cadres de protection des données applicables (Cadre de protection des données UE-États-Unis / Data Privacy Framework) pour garantir la sécurité et la confidentialité de ces informations.</p>
+
+    <h2>7. Liens vers des sites tiers</h2>
+    <p>Ce portfolio contient des liens vers des plateformes externes (notamment LinkedIn et GitHub). En cliquant sur ces liens, vous quittez ce site. L'éditeur n'exerce aucun contrôle sur les politiques de confidentialité ni sur les pratiques de ces sites tiers.</p>
+
+    <h2>8. Vos droits (RGPD)</h2>
+    <p>Conformément à la réglementation sur la protection des données personnelles, vous disposez des droits suivants concernant vos données :</p>
+    <ul>
+      <li>Droit d'accès et de rectification ;</li>
+      <li>Droit à l'effacement (« droit à l'oubli ») ;</li>
+      <li>Droit à la limitation du traitement.</li>
+    </ul>
+    <p>Pour toute demande concernant la gestion du site, vous pouvez me contacter directement via LinkedIn ou GitHub. Si vous estimez, après m'avoir contacté, que vos droits ne sont pas respectés, vous avez le droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés — <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 1.2;
+      this.vy = (Math.random() - 0.5) * 1.2;
+      this.radius = Math.random() * 2 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(100, 181, 246, 0.8)';
+      ctx.fill();
+    }
+  }
+
+  const particles = [];
+  for (let i = 0; i < 60; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+      for (let j = i + 1; j < particles.length; j++) {
+        let dx = particles[i].x - particles[j].x;
+        let dy = particles[i].y - particles[j].y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(100, 181, 246, ${1 - dist / 120})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>
