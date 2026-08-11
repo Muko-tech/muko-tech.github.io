@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Force la barre du navigateur mobile en bleu sombre -->
 <meta name="theme-color" content="#0f2027">
 <title>Eben Mukokeshi — Portfolio BTS SIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,10 +27,10 @@
   
   html, body {
     background-color: #0f2027 !important;
-    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important;
-    background-attachment: fixed !important;
     min-height: 100vh;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   html{scroll-behavior:smooth;}
@@ -43,25 +42,30 @@
     position: relative;
   }
 
-  /* Canvas d'arrière-plan animé */
+  /* Fixed Background Canvas for Network Animation */
   #bgCanvas {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
-    background: transparent;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
   }
 
   a{color: var(--navy-light); text-decoration:none;}
   a:hover{text-decoration:underline;}
   ::selection{background:var(--navy); color:#fff;}
 
-  .layout{display:flex; min-height:100vh;}
+  .layout{
+    display:flex; 
+    min-height:100vh;
+    position: relative;
+    z-index: 1;
+  }
 
-  /* Bouton Hamburger - Caché par défaut sur PC */
+  /* Mobile Burger Button */
   .mobile-burger {
     display: none;
     position: fixed;
@@ -79,7 +83,7 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
 
-  /* Sidebar Fixe sur PC */
+  /* Sidebar */
   nav.sidebar{
     width:240px; flex-shrink:0;
     background: var(--glass-sidebar);
@@ -124,7 +128,7 @@
   .sidebar .linkedin a{color:#64b5f6; font-size:13px; font-weight:600;}
   .sidebar .linkedin a:hover{color:#ffffff;}
 
-  /* Main avec décalage PC */
+  /* Main */
   main{
     flex:1; 
     min-width:0; 
@@ -274,7 +278,7 @@
   }
   footer a{color:#64b5f6; font-weight:600;}
 
-  /* --- ADAPTATION MOBILE (Écrans < 900px) --- */
+  /* --- ADAPTATION MOBILE --- */
   @media (max-width: 900px) {
     .mobile-burger {
       display: block;
@@ -332,11 +336,11 @@
 </head>
 <body>
 
-<!-- Bouton Hamburger (uniquement sur téléphone) -->
-<button class="mobile-burger" id="burgerBtn" aria-label="Menu">☰</button>
-
 <!-- Canvas d'arrière-plan animé -->
 <canvas id="bgCanvas"></canvas>
+
+<!-- Bouton Hamburger (mobile) -->
+<button class="mobile-burger" id="burgerBtn" aria-label="Menu">☰</button>
 
 <div class="layout">
 
@@ -570,13 +574,13 @@
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
 
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
   const mouse = { x: null, y: null, radius: 150 };
 
@@ -592,8 +596,8 @@
 
   class Particle {
     constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * 1.2;
       this.vy = (Math.random() - 0.5) * 1.2;
       this.radius = Math.random() * 2 + 1;
@@ -603,8 +607,8 @@
       this.x += this.vx;
       this.y += this.vy;
 
-      if (this.x < 0 || this.x > width) this.vx *= -1;
-      if (this.y < 0 || this.y > height) this.vy *= -1;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
       if (mouse.x !== null && mouse.y !== null) {
         let dx = mouse.x - this.x;
@@ -622,19 +626,19 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(100, 181, 246, 0.7)';
+      ctx.fillStyle = 'rgba(100, 181, 246, 0.8)';
       ctx.fill();
     }
   }
 
-  const particleCount = Math.min(Math.floor(width / 12), 90);
+  const particleCount = Math.min(Math.floor(window.innerWidth / 12), 90);
   const particles = [];
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
   }
 
   function animate() {
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
@@ -661,7 +665,7 @@
 
   animate();
 
-  // Gestion du menu Burger et fermeture automatique
+  // Menu Burger
   const burgerBtn = document.getElementById('burgerBtn');
   const sidebar = document.getElementById('sidebar');
 
@@ -680,7 +684,7 @@
     });
   });
 
-  // Navigation dynamique (surlignage du menu selon le scroll)
+  // Highlight menu on scroll
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
     let current = '';
