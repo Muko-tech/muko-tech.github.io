@@ -234,6 +234,16 @@
   .card ul{margin:10px 0 0 18px; color:#334155; font-size:14.5px;}
   .card ul li{margin-bottom:5px;}
 
+  /* Image de projet */
+  .project-img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
   .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
 
   .skill-block h4{font-family:var(--display); color:#ffffff !important; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:22px; text-shadow:0 1px 3px rgba(0,0,0,0.4);}
@@ -424,11 +434,11 @@
       <div class="skill-block">
         <h4>Langages</h4>
         <div class="pill-row">
-          <span class="pill">HTML / CSS</span><span class="pill">SQL</span><span class="pill">PHP</span>
+          <span class="pill">HTML / CSS</span><span class="pill">JavaScript</span><span class="pill">SQL</span><span class="pill">PHP</span>
         </div>
-        <h4>Bases de données</h4>
+        <h4>Bases de données & Cloud</h4>
         <div class="pill-row">
-          <span class="pill">Modélisation relationnelle</span><span class="pill">Requêtes SQL simples &amp; avancées</span>
+          <span class="pill">Supabase</span><span class="pill">Modélisation relationnelle</span><span class="pill">Requêtes SQL</span>
         </div>
         <h4>Outils &amp; systèmes</h4>
         <div class="pill-row">
@@ -506,13 +516,30 @@
         <div class="note">Cette expérience au sein de BNP Paribas m'a permis de consolider mes compétences pratiques en support de proximité et gestion de parc informatique. J'y ai appris à gérer les priorités des demandes via Service-Now, à assurer l'intégration des utilisateurs avec Active Directory et OpenTrust CMS, et à appliquer rigoureusement les protocoles de sécurité réseau.</div>
       </div>
 
+      <!-- PROJET LOSSA -->
       <div class="card">
+        <img src="lossa_preview.png" alt="Aperçu du site LOSSA" class="project-img">
+        <h3>LOSSA — Plateforme e-commerce sécurisée</h3>
+        <span class="meta">Projet personnel · Développement full-stack web</span>
+        <p><strong>Contexte :</strong> création d'une boutique en ligne interactive avec authentification et paiement.</p>
+        <p><strong>Technologies :</strong> HTML, CSS, JavaScript, Supabase (Auth & BDD), API Flutterwave.</p>
+        <p><strong>Fonctionnalités :</strong></p>
+        <ul>
+          <li>Gestion des produits et comptes utilisateurs via Supabase.</li>
+          <li>Authentification sécurisée requise pour l'accès au panier et à la commande.</li>
+          <li>Tiroir panier dynamique avec calcul des frais de livraison selon la zone géographique.</li>
+          <li>Paiement sécurisé intégré via Flutterwave (cartes bancaires et Mobile Money).</li>
+        </ul>
+      </div>
+
+      <!-- PROJET NOMADE -->
+      <div class="card">
+        <img src="nomade_preview.jpg" alt="Aperçu du site NOMADE" class="project-img">
         <h3>NOMADE — Site web dynamique de voyage</h3>
-        <span class="meta">Projet personnel · Seul</span>
-        <p><strong>Contexte :</strong> conception d'un site de voyage proposant différents catalogues.</p>
-        <p><strong>Langages / outils :</strong> HTML, CSS, SQL, PHP.</p>
-        <p><strong>Travail réalisé :</strong> développement du site dynamique (pages PHP connectées à une base de données SQL) présentant les catalogues de voyages.</p>
-        <div class="note">À compléter : contexte précis, période, besoins détaillés, captures d'écran, et bilan personnel. <span class="badge-todo">à compléter</span></div>
+        <span class="meta">Projet personnel · Web dynamisme</span>
+        <p><strong>Contexte :</strong> conception d'un site de réservation de voyages et de circuits.</p>
+        <p><strong>Technologies :</strong> HTML, CSS, PHP, SQL.</p>
+        <p><strong>Fonctionnalités :</strong> catalogue dynamique interconnecté avec une base de données MySQL, recherche de destinations, gestion des sessions et ajout d'offres au panier.</p>
       </div>
     </section>
 
