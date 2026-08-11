@@ -275,12 +275,6 @@
   }
   .note strong{color:#ffffff;}
 
-  .badge-todo{
-    display:inline-block; font-size:11px; font-weight:600; color:#94a3b8;
-    border:1px solid rgba(255, 255, 255, 0.2); background:rgba(255, 255, 255, 0.05);
-    padding:3px 9px; border-radius:4px; margin-left:6px; vertical-align:middle;
-  }
-
   footer{
     padding:34px 64px; font-size:13px; color:#94a3b8;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -289,12 +283,12 @@
   }
   footer a{color:#64b5f6; font-weight:600;}
 
-  /* ACCORDÉON MOBILE CONFIGURATION */
-  details.mobile-accordion summary {
+  /* STYLE ACCORDÉON POUR LES RÉALISATIONS UNIQUEMENT */
+  details.realisations-accordion summary {
     cursor: default;
     list-style: none;
   }
-  details.mobile-accordion summary::-webkit-details-marker {
+  details.realisations-accordion summary::-webkit-details-marker {
     display: none;
   }
   .chevron {
@@ -355,8 +349,8 @@
       text-align: center;
     }
 
-    /* Activation Accordéon uniquement en Mobile */
-    details.mobile-accordion summary {
+    /* Accordéon Mobile uniquement pour la section Réalisations */
+    details.realisations-accordion summary {
       cursor: pointer;
       position: relative;
       padding-right: 30px;
@@ -367,7 +361,7 @@
       display: inline-block;
     }
 
-    details.mobile-accordion summary .chevron::after {
+    details.realisations-accordion summary .chevron::after {
       content: "❯";
       position: absolute;
       right: 5px;
@@ -378,7 +372,7 @@
       transition: transform 0.3s ease;
     }
 
-    details.mobile-accordion[open] summary .chevron::after {
+    details.realisations-accordion[open] summary .chevron::after {
       transform: translateY(-50%) rotate(90deg);
     }
 
@@ -494,68 +488,39 @@
 
       <h3 style="margin:36px 0 16px; font-size:20px; color:#fff;">Formations</h3>
       <div class="timeline">
-        <div class="card card-accordion">
-          <details class="mobile-accordion">
-            <summary class="card-header">
-              <h3>BTS Services Informatiques aux Organisations — option SISR</h3>
-              <span class="meta">Lycée Parc des Loges, Évry · 2025 – 2027</span>
-              <span class="chevron"></span>
-            </summary>
-          </details>
+        <div class="card">
+          <h3>BTS Services Informatiques aux Organisations — option SISR</h3>
+          <span class="meta">Lycée Parc des Loges, Évry · 2025 – 2027</span>
         </div>
-        <div class="card card-accordion">
-          <details class="mobile-accordion">
-            <summary class="card-header">
-              <h3>Baccalauréat technologique</h3>
-              <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
-              <span class="chevron"></span>
-            </summary>
-          </details>
+        <div class="card">
+          <h3>Baccalauréat technologique</h3>
+          <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
         </div>
-        <div class="card card-accordion">
-          <details class="mobile-accordion">
-            <summary class="card-header">
-              <h3>Diplôme en langue française</h3>
-              <span class="meta">Lycée Louis Pergaud, Besançon · 2023 – 2024</span>
-              <span class="chevron"></span>
-            </summary>
-          </details>
+        <div class="card">
+          <h3>Diplôme en langue française</h3>
+          <span class="meta">Lycée Louis Pergaud, Besançon · 2023 – 2024</span>
         </div>
       </div>
 
       <h3 style="margin:36px 0 16px; font-size:20px; color:#fff;">Expériences</h3>
       <div class="timeline">
-        <div class="card card-accordion">
-          <details class="mobile-accordion">
-            <summary class="card-header">
-              <h3>Technicien Proxi — Stage</h3>
-              <span class="meta">BNP Paribas, Paris · 18 mai – 27 juin 2026</span>
-              <span class="chevron"></span>
-            </summary>
-            <div class="card-content">
-              <ul>
-                <li>Configuration de postes : accueil des nouveaux arrivants, mise en place des ordinateurs portables</li>
-                <li>Gestion des tickets via Service-Now (incidents et demandes des collaborateurs)</li>
-                <li>Enrôlement et activation de badges collaborateurs</li>
-                <li>Préparation de salles de réunion</li>
-              </ul>
-            </div>
-          </details>
+        <div class="card">
+          <h3>Technicien Proxi — Stage</h3>
+          <span class="meta">BNP Paribas, Paris · 18 mai – 27 juin 2026</span>
+          <ul style="margin-top: 10px;">
+            <li>Configuration de postes : accueil des nouveaux arrivants, mise en place des ordinateurs portables</li>
+            <li>Gestion des tickets via Service-Now (incidents et demandes des collaborateurs)</li>
+            <li>Enrôlement et activation de badges collaborateurs</li>
+            <li>Préparation de salles de réunion</li>
+          </ul>
         </div>
-        <div class="card card-accordion">
-          <details class="mobile-accordion">
-            <summary class="card-header">
-              <h3>Terminale — Projets web &amp; bases de données</h3>
-              <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
-              <span class="chevron"></span>
-            </summary>
-            <div class="card-content">
-              <ul>
-                <li>Création de sites en HTML</li>
-                <li>Modélisation et gestion de bases de données relationnelles, requêtes SQL</li>
-              </ul>
-            </div>
-          </details>
+        <div class="card">
+          <h3>Terminale — Projets web &amp; bases de données</h3>
+          <span class="meta">Lycée Rosa Parks, Montgeron · 2024 – 2025</span>
+          <ul style="margin-top: 10px;">
+            <li>Création de sites en HTML</li>
+            <li>Modélisation et gestion de bases de données relationnelles, requêtes SQL</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -564,34 +529,25 @@
     <section id="projet-formation">
       <div class="eyebrow">Mon projet de formation</div>
       <h2>Mon projet professionnel</h2>
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <p style="margin-bottom: 0;">
-              À l'issue de mon BTS SIO option SISR, je souhaite poursuivre vers un métier d'administrateur systèmes et réseaux...
-            </p>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <p>
-              À l'issue de mon BTS SIO option SISR, je souhaite poursuivre vers un métier d'administrateur systèmes et réseaux,
-              en m'appuyant sur les compétences acquises en stage (Active Directory, support informatique) et en formation
-              (réseaux, bases de données, développement web).
-            </p>
-            <div class="note">Pour consolider mes compétences, j'envisage de poursuivre mes études vers une Licence Professionnelle ou un Bachelor en Systèmes et Réseaux (ou Cybersécurité) en alternance, afin de valider un diplôme de niveau Bac+3 tout en renforçant mon expérience sur le terrain.</div>
-          </div>
-        </details>
+      <div class="card">
+        <p>
+          À l'issue de mon BTS SIO option SISR, je souhaite poursuivre vers un métier d'administrateur systèmes et réseaux,
+          en m'appuyant sur les compétences acquises en stage (Active Directory, support informatique) et en formation
+          (réseaux, bases de données, développement web).
+        </p>
+        <div class="note">Pour consolider mes compétences, j'envisage de poursuivre mes études vers une Licence Professionnelle ou un Bachelor en Systèmes et Réseaux (ou Cybersécurité) en alternance, afin de valider un diplôme de niveau Bac+3 tout en renforçant mon expérience sur le terrain.</div>
       </div>
     </section>
 
-    <!-- REALISATIONS -->
+    <!-- REALISATIONS (ACCORDÉONS UNIQUEMENT DANS CETTE SECTION) -->
     <section id="realisations">
       <div class="eyebrow">Mes réalisations</div>
       <h2>Stages &amp; projets</h2>
       <p class="section-sub">Travaux réalisés en stage et en projet personnel</p>
 
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
+      <!-- STAGE BNP PARIBAS -->
+      <div class="card">
+        <details class="realisations-accordion">
           <summary class="card-header">
             <img src="bnpparibas.jpg" alt="Stage BNP Paribas" class="project-img">
             <h3>Stage BNP Paribas — Support IT / Technicien Proxi</h3>
@@ -609,8 +565,8 @@
       </div>
 
       <!-- PROJET LOSSA -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
+      <div class="card">
+        <details class="realisations-accordion">
           <summary class="card-header">
             <img src="lossa_preview.png" alt="Aperçu du site LOSSA" class="project-img">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
@@ -635,8 +591,8 @@
       </div>
 
       <!-- PROJET NOMADE -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
+      <div class="card">
+        <details class="realisations-accordion">
           <summary class="card-header">
             <img src="nomade_preview.png" alt="Aperçu du site NOMADE" class="project-img">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px;">
@@ -661,120 +617,53 @@
       <h2>Dossier de veille technologique</h2>
       <p class="section-sub">Suivi régulier de sujets liés à mon domaine (SISR) — à mettre à jour tout au long de l'année</p>
 
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>L'Évolution de la Cybersécurité (2020 – 2026) — TP n°1 BTS SIO</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <p><strong>Problématique :</strong> Comment les cybermenaces ont-elles évolué entre 2020 et 2026 et quelles mutations ont transformé les stratégies de défense des systèmes d'information ?</p>
-            <p style="margin-top: 10px;"><strong>Objectifs du site :</strong></p>
-            <ul>
-              <li>Présenter la technologie et les modèles actuels.</li>
-              <li>Fournir des articles analysés (1 page par article).</li>
-              <li>Proposer une synthèse comparative.</li>
-            </ul>
-          </div>
-        </details>
+      <div class="card">
+        <h3>L'Évolution de la Cybersécurité (2020 – 2026) — TP n°1 BTS SIO</h3>
+        <p><strong>Problématique :</strong> Comment les cybermenaces ont-elles evolved entre 2020 et 2026 et quelles mutations ont transformé les stratégies de défense des systèmes d'information ?</p>
+        <p style="margin-top: 10px;"><strong>Objectifs du site :</strong></p>
+        <ul>
+          <li>Présenter la technologie et les modèles actuels.</li>
+          <li>Fournir des articles analysés (1 page par article).</li>
+          <li>Proposer une synthèse comparative.</li>
+        </ul>
       </div>
 
       <h3 style="margin: 32px 0 16px; font-size: 20px; color: #fff;">Articles sélectionnés (Parcours 2020 – 2026)</h3>
 
-      <!-- Article 1 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>1. 2020 : L'attaque SolarWinds et la compromission des chaînes d'approvisionnement logicielles</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : CISA (Cybersecurity &amp; Infrastructure Security Agency) · Décembre 2020</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse de la faille supply chain majeure.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>1. 2020 : L'attaque SolarWinds et la compromission des chaînes d'approvisionnement logicielles</h3>
+        <span class="meta">Source : CISA (Cybersecurity &amp; Infrastructure Security Agency) · Décembre 2020</span>
+        <div class="note"><strong>Analyse :</strong> Analyse de la faille supply chain majeure.</div>
       </div>
 
-      <!-- Article 2 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>2. 2022 : Ransomware Conti et l'état d'urgence nationale au Costa Rica</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : Check Point Research · Avril 2022</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse de la paralysie d'un État par rançongiciel.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>2. 2022 : Ransomware Conti et l'état d'urgence nationale au Costa Rica</h3>
+        <span class="meta">Source : Check Point Research · Avril 2022</span>
+        <div class="note"><strong>Analyse :</strong> Analyse de la paralysie d'un État par rançongiciel.</div>
       </div>
 
-      <!-- Article 3 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>3. 2023 : Vulnérabilité MOVEit et l'explosion de l'extorsion de masse sans chiffrement</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : Kiteworks Technical Guide &amp; CISA · Mai 2023</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse du ciblage de masse des serveurs MFT.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>3. 2023 : Vulnérabilité MOVEit et l'explosion de l'extorsion de masse sans chiffrement</h3>
+        <span class="meta">Source : Kiteworks Technical Guide &amp; CISA · Mai 2023</span>
+        <div class="note"><strong>Analyse :</strong> Analyse du ciblage de masse des serveurs MFT.</div>
       </div>
 
-      <!-- Article 4 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>4. 2024 : L'attaque contre Change Healthcare et la vulnérabilité des identités sans MFA</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : American Medical Association (AMA) Case Study · Mars 2024</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse d'une crise sanitaire provoquée par un défaut d'accès.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>4. 2024 : L'attaque contre Change Healthcare et la vulnérabilité des identités sans MFA</h3>
+        <span class="meta">Source : American Medical Association (AMA) Case Study · Mars 2024</span>
+        <div class="note"><strong>Analyse :</strong> Analyse d'une crise sanitaire provoquée par un défaut d'accès.</div>
       </div>
 
-      <!-- Article 5 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>5. 2025 : L'émergence des cyberattaques propulsées par l'Intelligence Artificielle</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : Dark Research / IBM Ponemon Institute · Novembre 2025</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse des menaces automatisées par IA générative.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>5. 2025 : L'émergence des cyberattaques propulsées par l'Intelligence Artificielle</h3>
+        <span class="meta">Source : Dark Research / IBM Ponemon Institute · Novembre 2025</span>
+        <div class="note"><strong>Analyse :</strong> Analyse des menaces automatisées par IA générative.</div>
       </div>
 
-      <!-- Article 6 -->
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>6. 2026 : Le piratage des applications publiques et le vol massif de jetons d'agents IA</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <span class="meta">Source : IBM X-Force Threat Intelligence · Février 2026</span>
-            <div class="note">
-              <strong>Analyse :</strong> Analyse des menaces actuelles sur les environnements connectés.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>6. 2026 : Le piratage des applications publiques et le vol massif de jetons d'agents IA</h3>
+        <span class="meta">Source : IBM X-Force Threat Intelligence · Février 2026</span>
+        <div class="note"><strong>Analyse :</strong> Analyse des menaces actuelles sur les environnements connectés.</div>
       </div>
     </section>
 
@@ -784,23 +673,15 @@
       <h2>Dossier de veille juridique</h2>
       <p class="section-sub">Suivi des évolutions réglementaires et juridiques de l'informatique</p>
 
-      <div class="card card-accordion">
-        <details class="mobile-accordion">
-          <summary class="card-header">
-            <h3>Sujet — RGPD &amp; protection des données</h3>
-            <span class="chevron"></span>
-          </summary>
-          <div class="card-content">
-            <p style="margin-bottom: 12px;">Suivi de l'actualité juridique autour du RGPD appliqué aux projets IA et web.</p>
-            <p><strong>Article :</strong> « IA agentique et données personnelles : la CNIL et le Conseil de l'IA et du Numérique publient une note exploratoire »</p>
-            <p><strong>Date :</strong> 20 juillet 2026</p>
-            <p><strong>Sources :</strong> CNIL — <a href="https://www.cnil.fr/fr/technologies/intelligence-artificielle-ia" target="_blank" rel="noopener">lire l'article</a></p>
-            
-            <div class="note">
-              <strong>Mon résumé :</strong> La CNIL et le Conseil de l'IA et du Numérique se penchent spécifiquement sur les agents IA capables d'agir de façon autonome, et sur les questions de protection des données que ça pose. Un sujet qui me concerne directement puisque je travaille sur des assistants virtuels de type Graph-RAG, jumeaux virtuels (numériques) et agents virtuels incarnés.
-            </div>
-          </div>
-        </details>
+      <div class="card">
+        <h3>Sujet — RGPD &amp; protection des données</h3>
+        <p style="margin-bottom: 12px;">Suivi de l'actualité juridique autour du RGPD appliqué aux projets IA et web.</p>
+        <p><strong>Article :</strong> « IA agentique et données personnelles : la CNIL et le Conseil de l'IA et du Numérique publient une note exploratoire »</p>
+        <p><strong>Date :</strong> 20 juillet 2026</p>
+        <p><strong>Sources :</strong> CNIL — <a href="https://www.cnil.fr/fr/technologies/intelligence-artificielle-ia" target="_blank" rel="noopener">lire l'article</a></p>
+        <div class="note">
+          <strong>Mon résumé :</strong> La CNIL et le Conseil de l'IA et du Numérique se penchent spécifiquement sur les agents IA capables d'agir de façon autonome, et sur les questions de protection des données que ça pose. Un sujet qui me concerne directement puisque je travaille sur des assistants virtuels de type Graph-RAG, jumeaux virtuels (numériques) et agents virtuels incarnés.
+        </div>
       </div>
     </section>
 
@@ -811,7 +692,7 @@
       <div class="grid-2">
         <div class="card"><h3>Technologie</h3><p>Veille personnelle, développement web et réseaux.</p></div>
         <div class="card"><h3>Musique</h3><p>Centre d'intérêt personnel.</p></div>
-        <div class="card"><h3>Sport</h3><p>Centre d'intérêt personal.</p></div>
+        <div class="card"><h3>Sport</h3><p>Centre d'intérêt personnel.</p></div>
       </div>
     </section>
 
@@ -827,9 +708,9 @@
 </div>
 
 <script>
-  // Script de contrôle automatique de l'ouverture/fermeture des accordéons
+  // Contrôle d'ouverture uniquement sur les cartes de la section Réalisations
   function checkAccordionState() {
-    const accordions = document.querySelectorAll('details.mobile-accordion');
+    const accordions = document.querySelectorAll('details.realisations-accordion');
     if (window.innerWidth > 900) {
       accordions.forEach(acc => acc.setAttribute('open', ''));
     } else {
