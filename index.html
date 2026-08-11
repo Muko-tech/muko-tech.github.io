@@ -14,7 +14,7 @@
     --glass-bg: rgba(255, 255, 255, 0.45);
     --glass-card: rgba(255, 255, 255, 0.55);
     --glass-border: rgba(255, 255, 255, 0.6);
-    --glass-sidebar: rgba(10, 37, 64, 0.75);
+    --glass-sidebar: rgba(10, 37, 64, 0.85);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
     --line: rgba(223, 230, 237, 0.6);
     --text: #1c2b39;
@@ -65,6 +65,52 @@
   a:hover{text-decoration:underline;}
   ::selection{background:var(--navy); color:#fff;}
 
+  /* Bouton Hamburger 3 traits */
+  .menu-toggle {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1001;
+    background: rgba(10, 37, 64, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+  .menu-toggle:hover {
+    background: var(--navy);
+    transform: scale(1.05);
+  }
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  /* Animation bouton burger en X lors de l'ouverture */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   .layout{display:flex; min-height:100vh;}
 
   /* Sidebar Liquid Glass */
@@ -74,10 +120,12 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-right: 1px solid rgba(255, 255, 255, 0.18);
-    padding:36px 0;
+    padding:80px 0 36px 0;
     position:sticky; top:0; height:100vh;
     overflow-y:auto;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
   }
   .sidebar .brand{
     font-family:var(--display); font-weight:800; font-size:17px; color:#fff;
@@ -109,10 +157,20 @@
     border-bottom:1px solid var(--line);
     max-width:960px;
   }
+
+  /* Responsive pour le menu déroulant */
   @media (max-width:900px){
-    .layout{flex-direction:column;}
-    nav.sidebar{width:100%; height:auto; position:relative; padding:20px 0;}
-    section{padding:48px 24px;}
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      transform: translateX(-100%); /* Caché par défaut sur petit écran */
+    }
+    nav.sidebar.open {
+      transform: translateX(0); /* Déroulé lors du clic */
+    }
+    section{padding:84px 24px 48px 24px;}
   }
 
   .eyebrow{
@@ -249,9 +307,17 @@
 </style>
 </head>
 <body>
+
+<!-- Bouton trois traits (Hamburger) -->
+<button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
 <div class="layout">
 
-  <nav class="sidebar">
+  <nav class="sidebar" id="sidebar">
     <div class="brand">Eben Mukokeshi<small>BTS SIO — SISR</small></div>
     <ul>
       <li><a href="#accueil" class="active">Accueil</a></li>
@@ -482,6 +548,24 @@
 <script>
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+
+  // Gestion de l'ouverture / fermeture du menu hamburger
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Ferme le menu automatiquement au clic sur un lien (sur mobile)
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+  // Détection du scroll pour mettre en surbrillance la section active
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => {
