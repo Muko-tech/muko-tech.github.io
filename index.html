@@ -38,18 +38,21 @@
     position: relative;
   }
 
-  /* Fixed Background Canvas for Network Animation */
-  #bgCanvas {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-  }
-
+ /* Fixed Background Canvas for Network Animation (Fix Mobile Scroll) */
+#bgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  height: 100dvh !important; /* S'adapte à la hauteur dynamique sur mobile */
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important;
+  background-attachment: fixed !important;
+}
   a{color: var(--navy-light); text-decoration:none;}
   a:hover{text-decoration:underline;}
   ::selection{background:var(--navy); color:#fff;}
