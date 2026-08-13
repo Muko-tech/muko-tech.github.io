@@ -255,7 +255,10 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-
+  .pill {
+    white-space: nowrap; /* Empêche le texte de passer sur 2 lignes */
+    flex-shrink: 0;      /* Empêche Flexbox d'écraser le badge sur mobile */
+}
   .timeline{border-left:2px solid rgba(100, 181, 246, 0.4); padding-left:26px; margin-left:6px;}
   .timeline .card{position:relative;}
   .timeline .card::before{
