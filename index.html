@@ -289,6 +289,51 @@
   }
   footer a{color:#64b5f6; font-weight:600;}
 
+  /* CERTIFICATIONS */
+  .cert-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:34px;}
+  .cert-stat{
+    background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+    border-radius:14px; padding:16px 18px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .cert-stat b{display:block; font-family:var(--display); font-size:28px; font-weight:800; line-height:1.1;}
+  .cert-stat span{font-size:12.5px; color:#cbd5e1; font-weight:600;}
+  .cert-stat.ok b{color:#4ade80;}
+  .cert-stat.wip b{color:#fde047;}
+  .cert-stat.todo b{color:#64b5f6;}
+
+  .cert-group-title{font-size:18px !important; margin:30px 0 14px; display:flex; align-items:center; gap:10px;}
+  .cert-group-title::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--dot,#64b5f6); box-shadow:0 0 0 4px rgba(255,255,255,0.06);}
+
+  .cert-card{display:flex; gap:22px; align-items:flex-start;}
+  .cert-visual{
+    width:110px; height:110px; flex-shrink:0; border-radius:16px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+  }
+  .cert-visual img{width:100%; height:100%; object-fit:contain;}
+  .cert-visual .issuer-tile{font-family:var(--display); font-weight:800; font-size:22px; color:#fff; line-height:1.15; padding:8px;}
+  .cert-visual .issuer-tile small{display:block; font-size:10.5px; font-weight:600; color:#94a3b8; letter-spacing:.05em; margin-top:4px;}
+  .cert-body{flex:1; min-width:0;}
+  .cert-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px; flex-wrap:wrap;}
+  .cert-head h3{margin-bottom:0 !important;}
+  .status{font-size:11px !important; padding:4px 10px !important;}
+  .status.ok{background: rgba(34,197,94,0.2) !important; color:#4ade80 !important; border-color: rgba(34,197,94,0.5) !important;}
+  .status.wip{background: rgba(234,179,8,0.2) !important; color:#fde047 !important; border-color: rgba(234,179,8,0.5) !important;}
+  .status.todo{background: rgba(100,181,246,0.15) !important; color:#9be7ff !important; border-color: rgba(100,181,246,0.45) !important;}
+  .cert-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  .cert-links .btn{font-size:13px; padding:9px 16px;}
+
+  .progress{height:8px; border-radius:8px; background: rgba(255,255,255,0.1); overflow:hidden; margin:12px 0 6px;}
+  .progress > i{display:block; height:100%; border-radius:8px; background: linear-gradient(90deg, #fde047, #facc15);}
+  .progress-label{font-size:12.5px; color:#94a3b8; font-weight:600;}
+
+  .cert-slot{
+    border:1.5px dashed rgba(100,181,246,0.45) !important; background: rgba(15,32,39,0.35) !important;
+    box-shadow:none !important;
+  }
+  .cert-slot .cert-visual{border-style:dashed; color:#64b5f6; font-size:34px; font-weight:300;}
+  .cert-slot h3{color:#cbd5e1 !important;}
+
   /* STYLE ACCORDÉON POUR LES RÉALISATIONS UNIQUEMENT */
   details.realisations-accordion summary {
     cursor: default;
@@ -349,6 +394,12 @@
       grid-template-columns: 1fr;
     }
 
+    .cert-stats{gap:8px;}
+    .cert-stat{padding:12px;}
+    .cert-stat b{font-size:22px;}
+    .cert-card{flex-direction:column; gap:14px;}
+    .cert-visual{width:90px; height:90px;}
+
     footer {
       padding: 24px 20px;
       flex-direction: column;
@@ -407,6 +458,7 @@
       <li><a href="#identification">Identification</a></li>
       <li><a href="#parcours">Mon parcours</a></li>
       <li><a href="#projet-formation">Projet de formation</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#veille-techno">Veille technologique</a></li>
       <li><a href="#veille-juridique">Veille juridique</a></li>
@@ -545,6 +597,110 @@
       </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="eyebrow">Mes certifications</div>
+      <h2>Certifications &amp; badges</h2>
+      <p class="section-sub">Mon parcours de certification complémentaire, orienté cybersécurité</p>
+
+      <!-- Compteurs : mettre à jour les chiffres quand une certification avance -->
+      <div class="cert-stats">
+        <div class="cert-stat ok"><b>2</b><span>Obtenues</span></div>
+        <div class="cert-stat wip"><b>1</b><span>En cours</span></div>
+        <div class="cert-stat todo"><b>2</b><span>À venir</span></div>
+      </div>
+
+      <!-- ===== OBTENUES ===== -->
+      <h3 class="cert-group-title" style="--dot:#4ade80;">Obtenues</h3>
+
+      <!-- Cisco — Introduction to Cybersecurity -->
+      <div class="card cert-card">
+        <div class="cert-visual">
+          <img src="badge_intro_cybersecurity.png" alt="Badge Cisco Networking Academy Introduction to Cybersecurity">
+        </div>
+        <div class="cert-body">
+          <div class="cert-head">
+            <h3>Introduction to Cybersecurity</h3>
+            <span class="pill status ok">Obtenue</span>
+          </div>
+          <span class="meta">Cisco Networking Academy · Badge numérique Credly · 17 avril 2026</span>
+          <p>Menaces et attaques courantes, protection des données personnelles et de l'entreprise, bonnes pratiques de sécurité.</p>
+          <div class="cert-links">
+            <a href="https://www.credly.com/badges/f9d99813-a7cb-4581-af63-0649d314cb45" target="_blank" rel="noopener" class="btn btn-primary">Vérifier le badge ↗</a>
+            <a href="certificat_cisco_intro_cybersecurity.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Voir le certificat (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CNIL — Atelier RGPD, module 6 -->
+      <div class="card cert-card">
+        <div class="cert-visual">
+          <div class="issuer-tile">CNIL<small>RGPD</small></div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-head">
+            <h3>RGPD — Module 6 : Travail et données personnelles</h3>
+            <span class="pill status ok">Obtenue · 97 %</span>
+          </div>
+          <span class="meta">CNIL (Commission nationale de l'informatique et des libertés) · 9 janvier 2026</span>
+          <p>Règles de protection des données personnelles dans le cadre du travail : droits des salariés, obligations de l'employeur.</p>
+          <div class="cert-links">
+            <a href="attestation_cnil_rgpd_module6.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Voir l'attestation (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== EN COURS ===== -->
+      <h3 class="cert-group-title" style="--dot:#fde047;">En cours</h3>
+
+      <!-- Cisco — Principes de cybersécurité -->
+      <div class="card cert-card">
+        <div class="cert-visual">
+          <div class="issuer-tile">Cisco<small>NETACAD</small></div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-head">
+            <h3>Principes de cybersécurité</h3>
+            <span class="pill status wip">En cours</span>
+          </div>
+          <span class="meta">Cisco Networking Academy · Démarré en octobre 2026</span>
+          <p>Sécurisation des réseaux, contrôle d'accès, pare-feu, systèmes Windows et Linux, gestion des risques.</p>
+          <!-- Progression : modifier le pourcentage dans style="width:..%" et dans le texte -->
+          <div class="progress"><i style="width:5%;"></i></div>
+          <span class="progress-label">Module 1 en cours</span>
+        </div>
+      </div>
+
+      <!-- ===== À VENIR (emplacements réservés) ===== -->
+      <h3 class="cert-group-title" style="--dot:#64b5f6;">À venir</h3>
+
+      <!-- Emplacement 1 : remplacer le titre, l'organisme et la date, puis passer la carte dans "Obtenues" une fois validée -->
+      <div class="card cert-card cert-slot">
+        <div class="cert-visual">+</div>
+        <div class="cert-body">
+          <div class="cert-head">
+            <h3>Prochaine certification</h3>
+            <span class="pill status todo">À venir</span>
+          </div>
+          <span class="meta">Organisme · Date prévue</span>
+          <p>Emplacement réservé pour ma prochaine certification en cybersécurité.</p>
+        </div>
+      </div>
+
+      <!-- Emplacement 2 -->
+      <div class="card cert-card cert-slot">
+        <div class="cert-visual">+</div>
+        <div class="cert-body">
+          <div class="cert-head">
+            <h3>Prochaine certification</h3>
+            <span class="pill status todo">À venir</span>
+          </div>
+          <span class="meta">Organisme · Date prévue</span>
+          <p>Emplacement réservé pour une certification à venir.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- REALISATIONS (ACCORDÉONS UNIQUEMENT DANS CETTE SECTION) -->
     <section id="realisations">
       <div class="eyebrow">Mes réalisations</div>
@@ -636,7 +792,7 @@
       <p><strong>Technologies :</strong> HTML, CSS, JavaScript, FontAwesome, GitHub Pages.</p>
       <p><strong>Fonctionnalités :</strong></p>
       <ul>
-        <li>Présentation dynamique des 6 pôles d'activités (Génie civil, Menuiserie, Imprimerie, Marketing, Fournitures, Cleaning).</li
+        <li>Présentation dynamique des 6 pôles d'activités (Génie civil, Menuiserie, Imprimerie, Marketing, Fournitures, Cleaning).</li>
       </ul>
     </div>
   </details>
