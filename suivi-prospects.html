@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2747d6">
+<title>Prospects MUKO-TECH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: en-tête avec objectif 30 prospects, rangée de compteurs par statut, filtres, liste de fiches prospects, panneau d'ajout/modification. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --ink:#12202b; --muted:#56636f; --line:#d6dce3;
+  --accent:#2747d6; --accent-ink:#ffffff; --soft:#e8edfb;
+  --warn:#b4570f; --warn-soft:#fbeee2; --ok:#1f7a4d; --ok-soft:#e3f3ea; --no:#8a2f2f;
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f151c; --surface:#17202a; --ink:#e8edf2; --muted:#9eabb8; --line:#2a3644;
+  --accent:#7d97ff; --accent-ink:#0f151c; --soft:#1e2a45;
+  --warn:#f0a35e; --warn-soft:#3a2614; --ok:#5fcf93; --ok-soft:#153325; --no:#f08c8c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f151c; --surface:#17202a; --ink:#e8edf2; --muted:#9eabb8; --line:#2a3644;
+  --accent:#7d97ff; --accent-ink:#0f151c; --soft:#1e2a45;
+  --warn:#f0a35e; --warn-soft:#3a2614; --ok:#5fcf93; --ok-soft:#153325; --no:#f08c8c; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 48px;display:grid;gap:20px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,38px);line-height:1.05;margin:0;text-wrap:balance}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sub{color:var(--muted);margin:4px 0 0}
+.btn{font:600 15px var(--body);border-radius:10px;padding:11px 16px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:44px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--no)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.goal{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;gap:10px}
+.goal-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.goal b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.bar{height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;width:0;transition:width .3s}
+.money{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.money span b{font-family:var(--body);font-size:15px;color:var(--ink)}
+
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat{font:600 14px var(--body);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:8px 14px;cursor:pointer;display:flex;gap:8px;align-items:center;min-height:40px}
+.stat .n{font-variant-numeric:tabular-nums;color:var(--muted)}
+.stat[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.stat[aria-pressed="true"] .n{color:var(--bg)}
+
+.alert{background:var(--warn-soft);color:var(--ink);border-radius:12px;padding:12px 16px;font-weight:600}
+.alert[hidden]{display:none}
+.notice{border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;color:var(--muted)}
+
+.list{display:grid;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:start}
+.card.due{border-color:var(--warn)}
+.name{font-weight:700;font-size:17px}
+.meta{color:var(--muted);font-size:14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--soft);color:var(--ink)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.note{font-size:14px;margin-top:6px;white-space:pre-line;overflow-wrap:anywhere}
+.side{display:grid;gap:8px;justify-items:end}
+.side select{font:600 14px var(--body);border-radius:8px;padding:8px 10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);min-height:40px}
+.acts{display:flex;gap:6px}
+.acts .btn{padding:7px 11px;font-size:13px;min-height:36px}
+.empty{text-align:center;padding:40px 16px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+
+.panel{background:var(--surface);border:1.5px solid var(--accent);border-radius:14px;padding:18px;display:grid;gap:14px}
+.panel h2{font-family:var(--display);font-size:22px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{display:grid;gap:5px;font-size:13px;font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 11px;width:100%;min-height:44px}
+textarea{min-height:70px}
+.full{grid-column:1/-1}
+.row-btns{display:flex;gap:8px;flex-wrap:wrap}
+.err{color:var(--no);font-size:14px}
+.backup{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
+.backup .btn{padding:7px 12px;font-size:13px;min-height:36px}
+
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr}
+  .card{grid-template-columns:1fr}
+  .side{justify-items:start;grid-auto-flow:row}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Prospects Melun</h1>
+      <p class="sub">Commerces et artisans à démarcher pour MUKO-TECH.</p>
+    </div>
+    <button class="btn primary" id="addBtn" type="button">+ Ajouter un prospect</button>
+  </div>
+
+  <div class="notice" id="offline" hidden>Ce navigateur bloque l'enregistrement (navigation privée ?). Ouvre la page dans une fenêtre normale pour garder tes prospects.</div>
+
+  <form class="panel" id="panel" hidden novalidate>
+    <h2 id="panelTitle">Nouveau prospect</h2>
+    <div class="grid">
+      <label for="f-nom">Nom du commerce<input id="f-nom" placeholder="ex. Boulangerie du Centre" required></label>
+      <label for="f-metier">Métier<input id="f-metier" placeholder="ex. boulangerie, plombier, coiffeur"></label>
+      <label for="f-lieu">Adresse ou quartier<input id="f-lieu" placeholder="ex. rue Saint-Étienne, Melun"></label>
+      <label for="f-contact">Contact (gérant, téléphone)<input id="f-contact" placeholder="ex. M. Dupont, 01 64 …"></label>
+      <label for="f-probleme">Ce qui manque<select id="f-probleme"><option>Pas de site</option><option>Site vieux ou cassé</option><option>Fiche Google incomplète</option><option>Autre</option></select></label>
+      <label for="f-offre">Offre à proposer<select id="f-offre"><option value="demarrage">Pack Démarrage · 250 €</option><option value="pro">Site vitrine Pro · ~575 €</option><option value="refonte">Refonte · dès 350 €</option></select></label>
+      <label for="f-statut">Statut<select id="f-statut"></select></label>
+      <label for="f-relance">Date de relance<input id="f-relance" type="date"></label>
+      <label class="full" for="f-notes">Notes<textarea id="f-notes" placeholder="ex. Gérant sympa, repasser mardi matin. Veut surtout les horaires sur Google."></textarea></label>
+    </div>
+    <div class="err" id="formErr" hidden></div>
+    <div class="row-btns">
+      <button class="btn primary" type="submit" id="saveBtn">Enregistrer</button>
+      <button class="btn ghost" type="button" id="cancelBtn">Annuler</button>
+    </div>
+  </form>
+
+  <div class="goal">
+    <div class="goal-row"><span>Objectif : 30 prospects repérés</span><span><b id="total">0</b> / 30</span></div>
+    <div class="bar" role="progressbar" aria-label="Avancement vers 30 prospects" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="bar"><i id="barFill"></i></div>
+    <div class="money"><span>En discussion : <b id="potentiel">0 €</b></span><span>Signé : <b id="signe">0 €</b></span></div>
+  </div>
+
+  <div class="backup"><span id="saved">Enregistré sur cet appareil.</span><button class="btn ghost" type="button" id="exportBtn">Sauvegarder (fichier)</button><label class="btn ghost" for="importFile" style="display:inline-flex;align-items:center;cursor:pointer">Restaurer<input id="importFile" type="file" accept="application/json,.json" style="display:none"></label></div>
+
+  <div class="alert" id="due" hidden></div>
+
+  <div class="stats" id="stats" role="group" aria-label="Filtrer par statut"></div>
+
+  <div class="list" id="list">
+    <div class="empty"><strong>Aucun prospect pour l'instant</strong>Cherche « boulangerie Melun » ou « plombier Melun » sur Google Maps, puis ajoute ici ceux qui n'ont pas de site.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY="mukotech-prospects-v1";
+  var STATUTS=["À contacter","Visité","Intéressé","À relancer","Client","Pas intéressé"];
+  var PRIX={demarrage:250,pro:575,refonte:350};
+  var OFFRE_LBL={demarrage:"Pack Démarrage",pro:"Site vitrine Pro",refonte:"Refonte"};
+  var items=[], filter="Tous", editing=null, armed=null;
+  var $=function(id){return document.getElementById(id)};
+  $("f-statut").innerHTML=STATUTS.map(function(s){return "<option>"+s+"</option>"}).join("");
+
+  function load(){try{var r=localStorage.getItem(KEY);items=r?JSON.parse(r):[]}catch(e){items=[];$("offline").hidden=false}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(items));$("saved").textContent="Enregistré sur cet appareil."}catch(e){$("offline").hidden=false}}
+  function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+  function today(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
+  function fmtDate(s){if(!s)return"";var p=s.split("-");return p[2]+"/"+p[1]}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function isDue(p){return p.relance && p.relance<=today() && p.statut!=="Client" && p.statut!=="Pas intéressé"}
+
+  function render(){
+    var t=items.length;
+    $("total").textContent=t; $("barFill").style.width=Math.min(100,t/30*100)+"%"; $("bar").setAttribute("aria-valuenow",t);
+    var pot=0,sig=0;
+    items.forEach(function(p){var v=PRIX[p.offre]||0; if(p.statut==="Client")sig+=v; else if(p.statut==="Intéressé"||p.statut==="À relancer")pot+=v;});
+    $("potentiel").textContent=pot+" €"; $("signe").textContent=sig+" €";
+    var dues=items.filter(isDue);
+    $("due").hidden=!dues.length;
+    $("due").textContent=dues.length?(dues.length===1?"1 prospect à relancer aujourd'hui : ":dues.length+" prospects à relancer aujourd'hui : ")+dues.map(function(p){return p.nom}).join(", "):"";
+    var counts={Tous:t}; STATUTS.forEach(function(s){counts[s]=0}); items.forEach(function(p){counts[p.statut]=(counts[p.statut]||0)+1});
+    $("stats").innerHTML=["Tous"].concat(STATUTS).map(function(s){return '<button type="button" class="stat" data-f="'+esc(s)+'" aria-pressed="'+(filter===s)+'">'+esc(s)+' <span class="n">'+(counts[s]||0)+'</span></button>'}).join("");
+    var shown=items.filter(function(p){return filter==="Tous"||p.statut===filter});
+    shown.sort(function(a,b){var da=isDue(a)?0:1,dbb=isDue(b)?0:1;if(da!==dbb)return da-dbb;return (b.cree||"").localeCompare(a.cree||"")});
+    if(!shown.length){
+      $("list").innerHTML=t?'<div class="empty"><strong>Aucun prospect avec ce statut</strong>Choisis un autre filtre.</div>'
+        :'<div class="empty"><strong>Aucun prospect pour l\'instant</strong>Cherche « boulangerie Melun » ou « plombier Melun » sur Google Maps, puis ajoute ici ceux qui n\'ont pas de site.</div>';
+      return;
+    }
+    $("list").innerHTML=shown.map(function(p){
+      var due=isDue(p);
+      return '<article class="card'+(due?' due':'')+'"><div><div class="name">'+esc(p.nom)+'</div>'+
+        '<div class="meta">'+esc([p.metier,p.lieu].filter(Boolean).join(" · "))+(p.contact?'<br>'+esc(p.contact):'')+'</div>'+
+        '<div class="chips"><span class="chip">'+esc(p.probleme||"")+'</span><span class="chip">'+esc(OFFRE_LBL[p.offre]||"")+' · '+(PRIX[p.offre]||0)+' €</span>'+
+        (p.relance?'<span class="chip'+(due?' warn':'')+'">Relance '+fmtDate(p.relance)+'</span>':'')+'</div>'+
+        (p.notes?'<div class="note">'+esc(p.notes)+'</div>':'')+'</div>'+
+        '<div class="side"><select data-st="'+esc(p.id)+'" aria-label="Statut de '+esc(p.nom)+'">'+STATUTS.map(function(s){return '<option'+(s===p.statut?' selected':'')+'>'+s+'</option>'}).join("")+'</select>'+
+        '<div class="acts"><button type="button" class="btn ghost" data-ed="'+esc(p.id)+'">Modifier</button><button type="button" class="btn ghost danger" data-del="'+esc(p.id)+'">'+(armed===p.id?'Confirmer ?':'Supprimer')+'</button></div></div></article>';
+    }).join("");
+  }
+  function byId(id){return items.find(function(p){return p.id===id})}
+
+  $("stats").addEventListener("click",function(e){var b=e.target.closest("[data-f]");if(!b)return;filter=b.getAttribute("data-f");render()});
+  $("list").addEventListener("change",function(e){var id=e.target.getAttribute("data-st");if(!id)return;var p=byId(id);if(p){p.statut=e.target.value;save();render()}});
+  $("list").addEventListener("click",function(e){
+    var ed=e.target.closest("[data-ed]"),del=e.target.closest("[data-del]");
+    if(ed)openPanel(byId(ed.getAttribute("data-ed")));
+    if(del){var id=del.getAttribute("data-del");
+      if(armed===id){armed=null;items=items.filter(function(p){return p.id!==id});save();render()}
+      else{armed=id;render();setTimeout(function(){if(armed===id){armed=null;render()}},4000)}}
+  });
+  function openPanel(p){
+    editing=p||null;
+    $("panelTitle").textContent=p?"Modifier le prospect":"Nouveau prospect";
+    $("f-nom").value=p?p.nom:"";$("f-metier").value=p?p.metier||"":"";$("f-lieu").value=p?p.lieu||"":"";
+    $("f-contact").value=p?p.contact||"":"";$("f-probleme").value=p?p.probleme:"Pas de site";
+    $("f-offre").value=p?p.offre:"demarrage";$("f-statut").value=p?p.statut:"À contacter";
+    $("f-relance").value=p?p.relance||"":"";$("f-notes").value=p?p.notes||"":"";
+    $("formErr").hidden=true;$("panel").hidden=false;$("f-nom").focus();
+  }
+  $("addBtn").addEventListener("click",function(){openPanel(null)});
+  $("cancelBtn").addEventListener("click",function(){$("panel").hidden=true;editing=null});
+  $("panel").addEventListener("submit",function(e){
+    e.preventDefault();
+    var nom=$("f-nom").value.trim();
+    if(!nom){$("formErr").textContent="Donne au moins le nom du commerce.";$("formErr").hidden=false;$("f-nom").focus();return}
+    var data={nom:nom,metier:$("f-metier").value.trim(),lieu:$("f-lieu").value.trim(),contact:$("f-contact").value.trim(),
+      probleme:$("f-probleme").value,offre:$("f-offre").value,statut:$("f-statut").value,relance:$("f-relance").value,notes:$("f-notes").value.trim()};
+    if(editing){Object.assign(editing,data)}else{data.id=uid();data.cree=new Date().toISOString();items.push(data)}
+    save();$("panel").hidden=true;editing=null;render();
+  });
+
+  $("exportBtn").addEventListener("click",function(){
+    var blob=new Blob([JSON.stringify({app:"mukotech-prospects",v:1,date:new Date().toISOString(),items:items},null,2)],{type:"application/json"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="prospects-"+today()+".json";
+    document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+    $("saved").textContent="Fichier de sauvegarde téléchargé.";
+  });
+  $("importFile").addEventListener("change",function(e){
+    var f=e.target.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var d=JSON.parse(r.result);var list=Array.isArray(d)?d:d.items;if(!Array.isArray(list))throw 0;
+      var seen={};items.forEach(function(p){seen[p.id]=true});var added=0;
+      list.forEach(function(p){if(p&&p.nom&&!seen[p.id]){if(!p.id)p.id=uid();items.push(p);added++}});
+      save();render();$("saved").textContent=added+" prospect(s) restauré(s).";
+    }catch(x){$("saved").textContent="Ce fichier n'est pas une sauvegarde de prospects."}e.target.value=""};
+    r.readAsText(f);
+  });
+  window.addEventListener("storage",function(e){if(e.key===KEY){load();render()}});
+  load();render();
+})();
+</script>
+</body>
+</html>
